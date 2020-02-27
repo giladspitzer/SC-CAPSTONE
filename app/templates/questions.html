@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+    {% block app_content %}
+        <h1>Questions</h1>
+        <form action="" method="post">
+            <p>
+                {{ form.birthday.label }} <br>
+                {{ form.birthday(size=32) }}
+                {% for error in form.birthday.errors %}
+                <span style="color:red;">[{{ error }}</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.fav_pic.label }} <br>
+                {{ form.fav_pic(size=32) }}
+                {% for error in form.fav_pic.errors %}
+                <span style="color:red;">[{{ error }}</span>
+                {% endfor %}
+            </p>
+          <p>
+                {{ form.fav_fruit.label }} <br>
+                {{ form.fav_fruit(size=32) }}
+                {% for error in form.fav_fruit.errors %}
+                <span style="color:red;">[{{ error }}</span>
+                {% endfor %}
+            </p>
+        <p>{{ form.submit() }}</p>
+        </form>
+    {% endblock %}

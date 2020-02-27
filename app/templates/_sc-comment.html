@@ -1,0 +1,11 @@
+<td width="10%"><img src="{{ comment.commenter_img }}" width="50px" height="50px"></td>
+<td>
+    <a href="{{ comment.link }}">
+        {{ comment.commenter_name }}
+    </a>:
+        <br>
+        {{ comment.comment }}
+        <div class="post_time">
+            {{ time(comment.timestamp) }} <span style="color: #0f0f0f"> -- {{ comment.likes }} likes</span>
+        </div>
+</td>

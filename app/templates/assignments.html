@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <ul class="nav nav-tabs">
+        <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Order by:<span class="caret"></span></a>
+            <ul class="dropdown-menu">
+                <li class="active"><a data-toggle="tab" href="#assignments_due_desc">Due (soonest --> furthest)</a></li>
+                <li><a data-toggle="tab" href="#assignments_due_asc">Due (furthest --> soonest)</a></li>
+                <li><a data-toggle="tab" href="#assignments_time_asc">Time Spent (most --> least)</a></li>
+                <li><a data-toggle="tab" href="#assignments_time_desc">Time Spent (least --> most)</a></li>
+                <li><a data-toggle="tab" href="#latest_commited">Recently Worked On</a></li>
+            </ul>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="assignments_due_desc" class="tab-pane fade in active">
+            <table class="table table-hover">
+                {% for assignment in assignments_due_desc %}
+                    {% include '_condensed-assignment.html' %}
+                {% endfor %}
+            </table>
+        </div>
+        <div id="assignments_due_asc" class="tab-pane fade">
+            <table class="table table-hover">
+                {% for assignment in assignments_due_asc %}
+                    {% include '_condensed-assignment.html' %}
+                {% endfor %}
+            </table>
+        </div>
+        <div id="assignments_time_asc" class="tab-pane fade">
+            <table class="table table-hover">
+                {% for assignment in assignments_time_asc %}
+                    {% include '_condensed-assignment.html' %}
+                {% endfor %}
+            </table>
+        </div>
+        <div id="assignments_time_desc" class="tab-pane fade">
+            <table class="table table-hover">
+                {% for assignment in assignments_time_desc %}
+                    {% include '_condensed-assignment.html' %}
+                {% endfor %}
+            </table>
+        </div>
+        <div id="latest_commited" class="tab-pane fade">
+            <table class="table table-hover">
+                {% for assignment in latest_commited %}
+                    {% include '_condensed-assignment.html' %}
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

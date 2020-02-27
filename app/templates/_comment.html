@@ -1,0 +1,23 @@
+<td width="10%"><img class="img_small" src="{{ comment.author.picture_url }}"></td>
+<td width="90%">
+    <div class="comment_info">
+        <a href="{{ url_for('user', username=comment.author.username) }}"> {{ comment.author.username }} </a>:
+        <div class="post_body" style="padding-bottom: 5px">
+            <p>{{ comment.comment }}</p>
+        </div>
+        <div class="post_time" style="padding-left: 5px">
+             {{ time(comment.timestamp) }}
+            {% if comment.is_liked(current_user) %}
+                <span style="padding-left: 30px"><a href="{{url_for('unlike', type='commit_comment', id=comment.id) }}"><img src="https://img.icons8.com/metro/26/000000/thumbs-down.png" class="img_tiny">Unlike</a></span>
+            {% elif not comment.is_liked(current_user) %}
+                <span style="padding-left: 30px"><a href="{{url_for('like', type='commit_comment', id=comment.id) }}"><img src="https://img.icons8.com/pastel-glyph/64/000000/facebook-like.png" class="img_tiny">Like</a></span>
+            {% endif %}
+            {% if comment.likes|length > 0 %}
+                <div style="padding-left: 10px" class="popup" onclick="myFunction()">{{comment.likes|length}}
+                    <span class="popuptext" id="myPopup">{{ comment.get_liked() }}</span>
+                </div>
+            {% endif %}
+
+        </div>
+    </div>
+</td>

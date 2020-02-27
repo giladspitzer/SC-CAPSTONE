@@ -1,0 +1,209 @@
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+{% extends "base.html" %}
+
+{% block app_content %}
+
+    {# MODAL #}
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">People you follow with this assignment</h4>
+                </div>
+                <div class="modal-body" style="height: 200px; overflow: auto">
+                    <table class="table-hover">
+                        {% for a in assignment.get_affiliations(current_user)[1] %}
+                            <tr onclick="document.location='{{ url_for('user', username=a.username) }}'">
+                                <td width="30%">
+                                    <img src="{{ a.picture_url }}" class="img_med">
+                                </td>
+                                <td>
+                                    <span style="text-align: center"><a href="{{ url_for('user', username=a.username) }}" target="_blank"><h4>{{ a.username }}</h4></a></span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if assignment.get_affiliations(current_user)[1]|length > 0 %}
+        {% set target = "#myModal" %}
+    {% else %}
+        {% set target = '' %}
+    {% endif %}
+
+<table class='table'>
+    <tr valign="top">
+        <td width="10%">
+            <img class='full' src="{{ assignment.img }}">
+        </td>
+        <td class="assignment_info">
+            {% if assignment.get_affiliations(current_user)[0] == 1 %}
+                <a href="{{ url_for('section', id=assignment.section_id) }}"><h2>{{ assignment.course }}</a> --><a href="{{ url_for('assignment', id=assignment.id) }}"> {{ assignment.title }}✅</a>
+                    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target={{ target }}>
+                        <img src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png"><span style="size: 5px"> {{ assignment.get_affiliations(current_user)[1]|length }}</span>
+                    </button>
+                </h2>
+            {% else %}
+                <a href="{{ url_for('section', id=assignment.section_id) }}"><h2>{{ assignment.course }}</a> --> <a href="{{ url_for('assignment', id=assignment.id) }}"> {{ assignment.title }}❌</a>
+                    <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target={{ target }}>
+                        <img src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png"><span style="size: 5px"> {{ assignment.get_affiliations(current_user)[1]|length }}</span>
+                    </button>
+                </h2>
+            {% endif %}
+            <div class="assignment_description">
+                {{ assignment.description }}
+                <a href=" {{ assignment.web_url }}" target="_blank">View Assignment in Schoology</a>
+            </div>
+            <div class="assignment_due">
+                DUE: {{ assignment.due }}
+            </div>
+        {% if assignment.sc_comments.count() > 1 %}
+            <h5>Schoology Comments:</h5>
+            <div class="schoology_comments" style="border: 5px">
+                <table class="table table-hover table-striped" style="padding-top: 10px">
+                    <td>
+                        {% for comment in assignment.sc_comments %}
+                            <tr>{% include '_sc-comment.html' %}</tr>
+                        {% endfor %}
+                    </td>
+                </table>
+             </div>
+        {% endif %}
+        </td>
+        {% if assignment in current_user.assignments %}
+            <td class="affiliations" width="30%">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#stats">Stats</a></li>
+                    <li><a data-toggle="tab" href="#post_commit">Post Commit</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Commits<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                          <li style="padding-left: 3px"><u> Order by:</u></li>
+                          <li><a data-toggle="tab" href="#commit_history_timestamp_desc">Timestamp (oldest --> newest) </a></li>
+                          <li><a data-toggle="tab" href="#commit_history_timestamp_asc">Timestamp (newest --> oldest) </a></li>
+                          <li><a data-toggle="tab" href="#commit_history_time_desc">Time Spent (most --> least) </a></li>
+                          <li><a data-toggle="tab" href="#commit_history_time_asc">Time Spent (least --> most) </a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="tab-content" style="height: 500px; overflow: auto">
+                    <div id="stats" class="tab-pane fade in active">
+                        {% if assignment.grades.filter_by(user_id=current_user.id).count() > 0 %}
+                            {% set grade_item = assignment.grades.filter_by(user_id=current_user.id).first() %}
+                            {% set course = current_user.grades.filter_by(section_id=assignment.section_id).first() %}
+                        <h4>Your data: </h4>
+                        <div class="grade" style="padding-left: 5px; font-size: 16px">
+                            {% if grade_item.received_points == None %}
+                                No grade received yet
+                            {% else %}
+                                Assignment Grade: {{ grade_item.received_points }}/{{ grade_item.max_points }} <span style="font-size: 18px; font-weight: bold"> ({{ (grade_item.received_points|float / grade_item.max_points|float) * 100 }})</span>
+                                Course Grade: {{ course.grade }}
+                                {% if grade_item.comments != 'None' %}
+                                    <div class="comment">
+                                        Comment: {{ grade_item.comments }}
+                                    </div>
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                        <h4>Class Data: </h4>
+                        <div class="class_stats" style="padding-left: 5px; font-size: 16px">
+                            <ul>
+                            {% if assignment.get_average_time_spent()[1]|float > 0 %}
+                            <li><span style="color: black; font-size: 16px"> Time Spent (minutes):</span></li>
+                            <div class="bar">
+
+                                <span style="background-color: red; width: 30px; padding-left: 7px; padding-right: 7px; display: inline-block;">{{ assignment.get_extrema()[0] }}</span>
+                                <span style="background-color: yellow; width: 30px; padding-left: 7px; padding-right: 7px; display: inline-block;">{{ assignment.get_average_time_spent()[0]|float / assignment.get_average_time_spent()[1]|float}}</span>
+                                <span style="background-color: green; width: 30px; padding-left: 7px; padding-right: 7px; display: inline-block;">{{ assignment.get_extrema()[1] }}</span>
+                            </div>
+
+                            <li>
+                                Total Commits: {{ assignment.get_average_time_spent()[1]|float }}
+                            </li>
+                            <li>
+                                Total Time Spent (class-wide): {{ assignment.get_average_time_spent()[0]|float }} minutes
+                            </li>
+                            <li>
+                                Number of Students with Time Commits: {{ assignment.get_average_time_spent()[2]}}
+                            </li>
+                            {% else %}
+                            <li> No time commits to render data from yet</li>
+                            {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="post_commit" class="tab-pane fade">
+                        {% include '_commit_form.html' %}
+                     </div>
+                    <div id="commit_history_timestamp_desc" class="tab-pane fade">
+                        <table class="table table-hover">
+                        {% for post in assignment.commits|sort(attribute='timestamp') %}
+                            <tr> {% include '_commit.html' %}</tr>
+                        {% endfor %}
+                        </table>
+                     </div>
+                    <div id="commit_history_timestamp_asc" class="tab-pane fade">
+                        <table class="table table-hover">
+                        {% for post in assignment.commits|sort(attribute='timestamp', reverse = True) %}
+                            <tr> {% include '_commit.html' %}</tr>
+                        {% endfor %}
+                        </table>
+                     </div>
+                    <div id="commit_history_time_desc" class="tab-pane fade">
+                        <table class="table table-hover">
+                        {% for post in assignment.commits|sort(attribute='time_spent') %}
+                            <tr> {% include '_commit.html' %}</tr>
+                        {% endfor %}
+                        </table>
+                     </div>
+                    <div id="commit_history_time_asc" class="tab-pane fade">
+                        <table class="table table-hover">
+                        {% for post in assignment.commits|sort(attribute='time_spent', reverse = True) %}
+                            <tr> {% include '_commit.html' %}</tr>
+                        {% endfor %}
+                        </table>
+                     </div>
+                </div>
+            </td>
+        {% else %}
+            <td class="affiliations" width="30%">
+                {% if assignment.commits.count() > 0 %}
+                    <table class="table table-hover">
+                        {% for post in assignment.commits %}
+                            {% if current_user.is_following(post.author) %}
+                                <tr> {% include '_commit.html' %}</tr>
+                            {% endif %}
+                        {% endfor %}
+                    </table>
+                {% else %}
+                    <h5 style="text-align: center">No commits posted for this assignment</h5>
+                {% endif %}
+
+            </td>
+        {% endif %}
+    </tr>
+     <tr>
+         <td class="chat_box" colspan="2">
+             {% include '_assignment-chat.html' %}
+         </td>
+         <td>
+             <h3> Personal Notes</h3>
+         </td>
+     </tr>
+</table>
+
+{% endblock %}
+
+<script>
+// When the user clicks on <div>, open the popup
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
+</script>

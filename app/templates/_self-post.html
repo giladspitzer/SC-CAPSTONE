@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-end mb-4">
+    <div class="msg_cotainer_send">
+        {{post.body}}
+        <span class="msg_time_send">{{ time(post.timestamp) }}</span>
+    </div>
+    <div class="img_cont_msg">
+        <img src="{{ post.author.picture_url }}" class="img-circle user_img_msg">
+    </div>
+</div>

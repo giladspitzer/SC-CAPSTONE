@@ -1,0 +1,28 @@
+{% import 'bootstrap/wtf.html' as wtf %}
+<form method="POST" action="{{ url_for('create_post', option='post', id=0) }}" enctype="multipart/form-data">
+{{ wtf.form_field(post_form.post) }}
+{{ wtf.form_field(post_form.course) }}
+{{ wtf.form_field(post_form.assignment) }}
+{{ wtf.form_field(post_form.uploads) }}
+{{ wtf.form_field(post_form.submit) }}
+</form>
+
+<script>
+    let course_select = document.getElementById('course');
+    let assignment_select = document.getElementById('assignment');
+
+    course_select.onchange = function() {
+        course = course_select.value;
+        fetch('/set_assignment_choices/' + course).then(function (response) {
+            var rjson = response.json();
+            rjson.then(function(data) {
+                let optionHTML = '';
+                for (let assignment of data.assignments) {
+                    optionHTML += '<option value="' + assignment.id +'">' + assignment.title + '</option>';
+                }
+                assignment_select.innerHTML = optionHTML;
+            });
+        });
+
+    }
+</script>

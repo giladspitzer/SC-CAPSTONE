@@ -1,0 +1,75 @@
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<td><img class="img_small" src="{{ post.author.picture_url }}" ></td>
+<td>
+    <div class="post_info">
+        <span class="post_class_info" id="post_class_info">
+        <a href="{{ url_for('user', username=post.author.username) }}"> {{ post.author.username }} </a>
+        -->
+        {% if 'index' in request.path or 'user' in request.path %}
+        <a href="{{ url_for('section', id=post.get_assignment_course()[1]) }}"> {{ post.get_assignment_course()[0] }} </a>
+        -->
+        <a href="{{ url_for('assignment', id=post.assignment_id) }}"> {{ post.get_assignment_title() }} </a>
+        </span> -->
+        {% endif %}
+        <a href="#" data-toggle="tooltip" title="{{ post.get_tooltip() }}" data-placement="bottom"><span class="time_spent" style="color: {{ colorify(post) }}"> {{ convert_time(post.time_spent) }} </span></a>
+
+    </div>
+    <div class="post_body">
+        {{ post.body }}
+    </div>
+    <div class="post_time">
+         {{ time(post.timestamp) }}
+            <span style="padding-left: 30px" onclick="myFunction()">
+               {% if post.likes|length > 0 %}  {{post.likes|length}} {% endif %}
+            </span>
+        {% if post.is_liked(current_user) %}
+            <span style="padding-left: 5px"><a href="{{url_for('unlike', type='commit', id=post.id) }}"><img src="https://img.icons8.com/metro/26/000000/thumbs-down.png" class="img_tiny">Unlike</a></span>
+        {% elif not post.is_liked(current_user) %}
+            <span style="padding-left: 30px"><a href="{{url_for('like', type='commit', id=post.id) }}"><img src="https://img.icons8.com/pastel-glyph/64/000000/facebook-like.png" class="img_tiny">Like</a></span>
+        {% endif %}
+        <button type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target='#commitModal-{{ post.id }}'>
+            <span style="size: 5px"> MORE </span>
+        </button>
+        <div id="commitModal-{{ post.id }}" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Commit by {{ post.author.username }} for {{ post.get_assignment_course()[0] }}</h4>
+                </div>
+                <div class="modal-body" style="height: 500px">
+                    <div class="commit">
+                        {% include '_comment_modal.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</td>
+
+
+<script>
+      url = window.location.pathname;
+      var check = url.includes('index');
+    if  (check) {
+        console.log(url);
+        var element = document.getElementById('post_class_info');
+        console.log(element.style);
+        element.style.display = 'block';
+        }
+
+function myFunction() {
+  var popup = document.getElementById("myPopup");
+  popup.classList.toggle("show");
+}
+</script>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+

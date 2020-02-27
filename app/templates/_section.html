@@ -1,0 +1,81 @@
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
+
+{% extends "base.html" %}
+
+{% block app_content %}
+    {% if 'sections' in request.referrer %}
+    {# back button #}
+    <h4><a href="/sections"><--- My Sections</a></h4>
+    {% endif %}
+    {# set followers button target #}
+    {% if affiliations[1]|length > 0 %}
+        {% set target='#myModal' %}
+    {% else %}
+        {% set target='#' %}
+    {% endif %}
+
+    {# followers modal #}
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">People you follow in this section</h4>
+                </div>
+                <div class="modal-body" style="height: 200px; overflow: auto">
+                    <table class="table-hover">
+                        {% for a in affiliations[1] %}
+                            <tr onclick="document.location='{{ url_for('user', username=a.username) }}'">
+                                <td width="30%">
+                                    <img src="{{ a.picture_url }}" class="img_med">
+                                </td>
+                                <td>
+                                    <span style="text-align: center"><a href="{{ url_for('user', username=a.username) }}" target="_blank"><h4>{{ a.username }}</h4></a></span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {# Section Info #}
+    <table class="table">
+    <tr>
+        <td width="20%">
+            <img class='full-full' src="{{ section.img }}" style="padding-top: 10px">
+        </td>
+        <td style="padding-left: 25px">
+            {% if affiliations[0] == 1 %}
+                <h1> {{ section.title }}✅
+                    <button type="button" class="btn btn-default btn-sm followers-btn" data-toggle="modal" data-target={{ target }}>
+                        <img src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png">
+                        <span style="size: 5px"> {{ affiliations[1]|length }}</span>
+                    </button>
+                </h1>
+            {% endif %}
+            {% if affiliations[0] == 0 %}
+                <h1> {{ section.title }}❌
+                    <button type="button" class="btn btn-default btn-sm followers-btn" data-toggle="modal" data-target={{ target }}>
+                        <img src="https://img.icons8.com/ios-glyphs/30/000000/user--v1.png">
+                        <span style="size: 5px"> {{ affiliations[1]|length }}</span>
+                    </button>
+                </h1>
+            {% endif %}
+            <h3>Instructor: <a href="mailto:{{ section.instructor_email }}" target="_blank" > {{ section.instructor_name }} </a></h3>
+            {% if section in current_user.sections %}
+            <h3>Course Grade: <a href="https://app.schoology.com/course/{{section.schoology_id}}/student_grades" target="_blank">{{section.get_section_grade(current_user)}}</a></h3>
+            {% endif %}
+        </td>
+    </tr>
+    </table>
+
+    {# Section Assignments #}
+    <table class="table table-hover">
+        {% for assignment in section.assignments %}
+            {% include '_condensed-assignment.html' %}
+        {% endfor %}
+    </table>
+
+{% endblock %}

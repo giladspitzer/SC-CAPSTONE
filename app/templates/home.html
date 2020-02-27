@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+    {% block app_content %}
+        <h1>Home</h1>
+        {% if not logged_in %}
+        <h3>The only option right now is to login. If you would like to do so, <a href="{{ url_for('login') }}">Click Here</a></h3>
+        {%  else %}
+        <strike><h3>The only option right now is to login. If you would like to do so, click here </h3></strike>
+        <h3> Silly, you are already logged in!</h3>
+        {% endif %}
+    {% endblock %}
