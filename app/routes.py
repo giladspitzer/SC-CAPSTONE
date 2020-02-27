@@ -11,6 +11,7 @@ import os
 from threading import Thread
 
 # TODO- user image thumbnail,
+# DONT PLAY WITH PYTHON
 
 
 def set_options(form, section, assignment):
