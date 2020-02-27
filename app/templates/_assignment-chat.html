@@ -1,0 +1,44 @@
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/chat.css') }}">
+{% import 'bootstrap/wtf.html' as wtf %}
+
+<div class="card">
+    <div class="card-header msg_head">
+        <div class="d-flex bd-highlight">
+            <div class="user_info">
+                <span> {{assignment.title}} -- {{ assignment.course }} </span>
+                <p>{{ assignment.posts.all()|length }} Messages</p>
+            </div>
+
+        </div>
+    </div>
+    <div class="card-body msg_card_body">
+        {% for post in assignment.posts|sort(attribute='timestamp') %}
+            {% if post.user_id == current_user.id %}
+                {% include '_self-post.html' %}
+            {% else %}
+                {% include '_post.html' %}
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="card-footer">
+        <div class="input-group" style="display: block">
+            <form method="POST" action="{{ url_for('create_post', option='post', id=0) }}" enctype="multipart/form-data">
+                <div>
+                    {{ wtf.form_field(post_form.post, style='border-radius:15px; width:80%; resize:none; placeholder="Say something about this assignment..."') }}
+                </div>
+                <div style="padding: 10px">
+                    {{ wtf.form_field(post_form.submit, style='float:right') }}
+                </div>
+                <div style="display: none">
+                    {{ wtf.form_field(post_form.course) }}
+                    {{ wtf.form_field(post_form.assignment) }}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    let chat = document.getElementsByClassName('card-body');
+    chat.scrollTop = 50;
+</script>

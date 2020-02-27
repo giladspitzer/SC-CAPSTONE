@@ -1,0 +1,6 @@
+<td>
+    <h5><a href="{{ url_for('section', id=assignment.section_id) }}"><h5>{{ assignment.course }}</a> --><a href="{{ url_for('assignment', id=assignment.id) }}"> {{ assignment.title }}</a></h5>
+    <div class="assignment_due">
+        DUE: {{ assignment.due }} -- <img src="https://img.icons8.com/ios/15/000000/comments.png"> {{ assignment.get_number_commits() }}
+    </div>
+</td>

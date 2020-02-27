@@ -1,0 +1,56 @@
+{% if 'section' in request.path %}
+    <tr onclick="document.location='/assignment/{{ assignment.id }}'">
+        <td width="75%">
+            <a href="{{ url_for('assignment', id=assignment.id) }}"><h2>{{ assignment.title }}</h2></a>
+            <div class="assignment_due" style="padding-left: 10px">
+                DUE: {{ assignment.due }}
+            </div>
+        </td>
+        <td width="25%">
+            <div id="stats">
+                    {% if assignment.grades.filter_by(user_id=current_user.id).count() > 0 %}
+                        {% set grade_item = assignment.grades.filter_by(user_id=current_user.id).first() %}
+                        {% set course = current_user.grades.filter_by(section_id=assignment.section_id).first() %}
+                    <div class="grade" style="padding-left: 5px; font-size: 16px">
+                        {% if grade_item.received_points == None %}
+                            No grade received yet
+                        {% else %}
+                            Assignment Grade: {{ grade_item.received_points }}/{{ grade_item.max_points }} <span style="font-size: 18px; font-weight: bold"> ({{ (grade_item.received_points|float / grade_item.max_points|float) * 100 }})</span>
+                        {% endif %}
+                    {% endif %}
+            </div>
+
+        </td>
+    </tr>
+{% else %}
+    <tr onclick="document.location='/assignment/{{ assignment.id }}'">
+        <td width="15%">
+            <img class='img_med' src="{{ assignment.img }}"></td>
+        </td>
+        <td width="65%">
+            {% if assignment.get_affiliations(current_user)[0] == 1 %}
+                    <a href="{{ url_for('section', id=assignment.section_id) }}"><h2>{{ assignment.course }}</a> --><a href="{{ url_for('assignment', id=assignment.id) }}"> {{ assignment.title }}✅</a> </h2>
+            {% else %}
+                    <a href="{{ url_for('section', id=assignment.section_id) }}"><h2>{{ assignment.course }}</a> --> <a href="{{ url_for('assignment', id=assignment.id) }}"> {{ assignment.title }}❌ </a></h2>
+            {% endif %}
+            <div class="assignment_due" style="padding-left: 10px">
+                DUE: {{ assignment.due }}
+            </div>
+        </td>
+        <td width="20%">
+            <div id="stats">
+                    {% if assignment.grades.filter_by(user_id=current_user.id).count() > 0 %}
+                        {% set grade_item = assignment.grades.filter_by(user_id=current_user.id).first() %}
+                        {% set course = current_user.grades.filter_by(section_id=assignment.section_id).first() %}
+                    <div class="grade" style="text-align: center; font-size: 16px">
+                        {% if grade_item.received_points == None or grade_item.max_points|float == 0 %}
+                            No grade received yet
+                        {% else %}
+                            {{ grade_item.received_points }}/{{ grade_item.max_points }} <span style="font-size: 18px; font-weight: bold">
+                                ({{ (grade_item.received_points|float / grade_item.max_points|float) * 100 }})</span>
+                        {% endif %}
+                    {% endif %}
+                </div>
+        </td>
+    </tr>
+{% endif %}

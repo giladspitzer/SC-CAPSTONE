@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block app_content %}
+    <table class="table table-hover">
+    {% for section in sections %}
+        <tr onclick="document.location='/section/{{section.id}}'">
+            <td>
+                <img class='full-full' src="{{ section.img }}">
+            </td>
+            <td>
+                <h1 style="padding-left: 10px"><a href="{{url_for('section', id=section.id)}}">{{ section.title }}</a></h1>
+                {% if section.get_upcoming_assignments()|length > 0%}
+                    <h4 style="padding-left: 25px; color: #c9302c">{{section.get_upcoming_assignments()|length}} UPCOMING ASSIGNMENTS!</h4>
+                {% else %}
+                    <h4 style="padding-left: 25px; color: #3A7734">NO UPCOMING ASSIGNMENTS!</h4>
+                {% endif %}
+            </td>
+            {% if section.get_section_grade(current_user) != 'None' %}
+            <td align="right">
+                <h3>Grade: {{section.get_section_grade(current_user)}}</h3>
+            </td>
+            {% endif %}}
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

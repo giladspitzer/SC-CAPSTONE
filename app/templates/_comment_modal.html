@@ -1,0 +1,55 @@
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
+{% import 'bootstrap/wtf.html' as wtf %}
+
+<table class="table" style="margin-bottom: 0">
+    <tr>
+        <td width="10%"><img class="img_med" src="{{ post.author.picture_url }}" ></td>
+        <td width="90%">
+            <div class="post_info">
+                <span class="post_class_info" id="post_class_info">
+                <a href="{{ url_for('user', username=post.author.username) }}"> {{ post.author.username }} </a>
+                -->
+                {% if 'index' in request.path %}
+                <a href="{{ url_for('section', id=post.get_assignment_course()[1]) }}"> {{ post.get_assignment_course()[0] }} </a>
+                -->
+                <a href="{{ url_for('assignment', id=post.assignment_id) }}"> {{ post.get_assignment_title() }} </a>
+                </span> -->
+                {% endif %}
+                <button type="button" class="btn btn-default" data-toggle="popover" data-placement="bottom" title="Example popover" data-content="Some content in Popover on bottom">
+                    <span class="time_spent" style="color: {{ colorify(post) }}"> {{ convert_time(post.time_spent) }} </span>
+                </button>
+
+            </div>
+            <div class="post_body">
+                {{ post.body }}
+            </div>
+            <div class="post_time">
+                 {{ time(post.timestamp) }}
+                {% if post.is_liked(current_user) %}
+                    <span style="padding-left: 30px"><a href="{{url_for('unlike', type='commit', id=post.id) }}"><img src="https://img.icons8.com/metro/26/000000/thumbs-down.png" class="img_tiny">Unlike</a> <div style="padding-left: 2px" class="popup" onclick="myFunction()">{{post.likes|length}}
+                        <span class="popuptext" id="myPopup">{{ post.get_liked() }}</span>
+                    </div></span>
+                {% elif not post.is_liked(current_user) %}
+                    <span style="padding-left: 30px"><a href="{{url_for('like', type='commit', id=post.id) }}"><img src="https://img.icons8.com/pastel-glyph/64/000000/facebook-like.png" class="img_tiny">Like</a> <div style="padding-left: 2px" class="popup" onclick="myFunction()">{{post.likes|length}}
+                        <span class="popuptext" id="myPopup">{{ post.get_liked() }}</span>
+                    </div></span>
+                {% endif %}
+
+                <span style="padding-left: auto"><a href="#comment_post"><img src="https://img.icons8.com/material-sharp/24/000000/speech-bubble-with-dots.png" class="img_tiny">Comment</a> {{ post.comments.count() }}</span>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<div class="comments" style="padding-left: 60px; height: 300px; overflow: auto">
+    <table class="table table-hover" >
+        {% for comment in post.comments %}
+            <tr>{% include '_comment.html' %}</tr>
+        {% endfor %}
+    </table>
+</div>
+
+    <form method="POST" action="{{ url_for('create_post', option='commit_comment', id=post.id)}}">
+        <div style="max-height: 75px; max-width: 475px; margin-right: 0;" class="comment_form"> {{ wtf.form_field(comment_form.comment_post, style='resize:none', placeholder='Comment something...') }}</div>
+        {{ wtf.form_field(comment_form.submit, style='padding:10px; float:right; margine:10px') }}
+    </form>

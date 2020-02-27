@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+{% block app_content %}
+    <h1>Register</h1>
+    <h3>Before signing up, please <a href="https://app.schoology.com/api"  target="_blank">click here</a> to login with schoology and
+    obtain your special API key. Copy and paste the keys into the form boxes below to get started. </h3>
+    <div class="row">
+        <div class="col-md-4">
+            {{ wtf.quick_form(form) }}
+        </div>
+    </div>
+{% endblock %}

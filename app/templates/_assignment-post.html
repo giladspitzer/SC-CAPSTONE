@@ -1,0 +1,16 @@
+<table>
+        <tr valign="top">
+            <td><img src="{{ post.author.picture_url }}"></td>
+            <td>
+                <a href="{{ url_for('user', username=post.author.username) }}">
+                    {{ post.author.username }}
+                </a>
+                says:<br>
+                <ul>
+                    <li> <a href="http://127.0.0.1:5000/assignment/{{post.assignment_id}}">{{ post.get_assignment_title() }}</a>  -- {{ post.get_assignment_course() }}</li>
+                    <li> {{ post.timestamp }}</li>
+                    <li> {{ post.body }}</li>
+                </ul>
+            </td>
+        </tr>
+</table>

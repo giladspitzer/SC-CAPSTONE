@@ -1,0 +1,26 @@
+<div class="upcoming" style="height: 30%">
+    <h4>Upcoming Assignments:</h4>
+    <table class="table table-hover">
+    {% for assignment in current_user.upcoming_assignments(5) %}
+        <tr onclick="document.location='/assignment/{{ assignment.id }}'">{% include '_upcoming_assignment.html' %}</tr>
+    {% endfor %}
+    </table>
+    <button type="button" class="btn btn-default btn-block" onclick="window.location='/assignments'">All Assignments</button>
+{#    <button type="button" class="btn btn-primary btn-block"><h5 style="text-align: center"><a href="{{ url_for('assignments') }}">All Assignments</a></h5></button>#}
+</div>
+<div class="latest-grades" style="height: 30%">
+    <h4>Latest Grades Updates</h4>
+    <table class="table table-hover">
+    {% for assignment in current_user.latest_grades(5) %}
+        <tr onclick="document.location='/assignment/{{ assignment.id }}'">{% include '_latest_grade.html' %}</tr>
+    {% endfor %}
+    </table>
+</div>
+<div class="trending" style="height: 30%">
+    <h4>Trending Class Discussions</h4>
+    <table class="table table-hover">
+    {% for assignment in current_user.trending_discussions() %}
+        <tr onclick="document.location='/assignment/{{ assignment.id }}'" on>{% include '_trending.html' %}</tr>
+    {% endfor %}
+    </table>
+</div>

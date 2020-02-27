@@ -1,0 +1,7 @@
+{% set grade_item = assignment.grades.filter_by(user_id=current_user.id).first() %}
+<td>
+    <h5><a href="{{ url_for('section', id=assignment.section_id) }}"><h5>{{ assignment.course }}</a> --><a href="{{ url_for('assignment', id=assignment.id) }}"> {{ assignment.title }}</a></h5>
+    <div class="assignment_due" style="text-align: right">
+        {{ grade_item.received_points }}/{{ grade_item.max_points }} <span style="font-size: 18px; font-weight: bold"> ({{ (grade_item.received_points|float / grade_item.max_points|float) * 100 }})</span>
+    </div>
+</td>

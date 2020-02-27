@@ -1,0 +1,28 @@
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>Edit Profile</h1>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+        {{ wtf.form_field(form.username, style='width:300px') }}
+        </p>
+        <p>
+            {{ wtf.form_field(form.email, style='width:300px') }}
+        </p>
+        <p>
+            {{ wtf.form_field(form.about_me, style='width:560px; height:150px; overflow:auto; resize:none') }}
+        </p>
+        <p>
+            {{ wtf.form_field(form.consumer_key, style='width:400px') }}
+        </p>
+        <p>
+            {{ wtf.form_field(form.consumer_secret, style='width:400px') }}
+        </p>
+        <p>
+            {{ wtf.form_field(form.submit, class='btn btn-primary') }} <button type="button" class="btn btn-default" onclick="window.location='/user/{{ current_user.username }}'">Cancel</button>
+        </p>
+    </form>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>Hi, {{ current_user.username }}!</h1>
+    <table class="table">
+        <tr>
+            <td style="width: 70%">
+                <h4>Post a time commit:</h4>
+                {% include '_commit_form.html' %}
+                <table class="table table-hover">
+                    {% for post in posts|sort(attribute='timestamp', reverse=True) %}
+                        <tr style="width: 70%">
+                            {% include '_commit.html' %}
+                        </tr>
+                    {% endfor %}
+                </table>
+                <br>
+            </td>
+            <td style="width: 30%; padding: 5px">
+                {% include 'sidebar.html' %}
+            </td>
+        </tr>
+    </table>
+
+
+{% endblock %}
+
+{#        {% if prev_url %}#}
+{#            <a href="{{ prev_url }}">Newer posts</a>#}
+{#        {% endif %}#}
+{##}
+{#        {% if next_url %}#}
+{#            <a href="{{ next_url }}">Older posts</a>#}
+{#        {% endif %}#}
