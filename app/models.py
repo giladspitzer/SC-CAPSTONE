@@ -95,6 +95,7 @@ class User(UserMixin, db.Model):
     grades = db.relationship('SectionGrade', backref='author', lazy='dynamic')  # explain
     commit_comments = db.relationship('CommitComment', backref='author', lazy='dynamic')  # explain
     post_comments = db.relationship('PostComment', backref='author', lazy='dynamic')  # explain
+    notes = db.relationship('AssignmentNotes', backref='author', lazy='dynamic')
 
     def __repr__(self):
         return '<User {}>'.format(self.username)
@@ -131,6 +132,10 @@ class User(UserMixin, db.Model):
         if self.is_following(user):
             self.followed.remove(user)
 
+    def delete_follower(self, user):
+        if user.is_following(self):
+            user.followed.remove(self)
+
     def is_following(self, user):
         return self.followed.filter(
             followers.c.followed_id == user.id).count() > 0
@@ -140,6 +145,7 @@ class User(UserMixin, db.Model):
             followers, (followers.c.followed_id == Commit.user_id)).filter(
             followers.c.follower_id == self.id)
         own_commits = Commit.query.filter_by(user_id=self.id)
+
         return followed_commits.union(own_commits)
 
     def trending_discussions(self):
@@ -154,7 +160,7 @@ class User(UserMixin, db.Model):
                     if post.timestamp >= trending[0].timestamp:
                         trending.insert(0, post)
         assignments = []
-        for x in trending[:5]:
+        for x in sorted(trending[:5], key=lambda r: r.timestamp, reverse=True):
             assignments.append(Assignment.query.filter_by(id=x.assignment_id).first())
         return assignments
 
@@ -271,7 +277,6 @@ class User(UserMixin, db.Model):
         for i in grades:
             if int(i.section_id) in sections:
                 section = Section.query.filter_by(schoology_id=i.section_id).first_or_404()
-                print(section.title)
                 section_grade = str(i.final_grade[-1]['grade'])
 
                 if SectionGrade.query.filter_by(section_id=section.id, user_id=self.id).count() < 1:
@@ -283,12 +288,13 @@ class User(UserMixin, db.Model):
                     addition.update_grade(section_grade)
                 db.session.add(addition)
                 db.session.commit()
-                assignments_response = i.period[0]['assignment']
+                assignments_response = []
+                for x in i.period:
+                    for j in x['assignment']:
+                        assignments_response.append(j)
                 for grade in assignments_response:
-                    print(grade)
                     if int(grade['assignment_id']) in assignments:
                         assignment = Assignment.query.filter_by(schoology_id=int(grade['assignment_id'])).first()
-                        print('----', assignment.title)
                         if AssignmentGrade.query.filter_by(assignment_id=assignment.id, user_id=self.id).count() < 1:
                             addition = AssignmentGrade(user_id=self.id, section_id=section.id, assignment_id=assignment.id, max_points=grade['max_points'],
                                                        received_points=grade['grade'], comments=str(grade['comment']))
@@ -303,7 +309,7 @@ class User(UserMixin, db.Model):
                             db.session.add(graded_assignment)
                     else:
                         print('--------', int(grade['assignment_id']))
-                        # print('--------------', sc.get_assignment([self.api_key, self.api_secret, self.outeruid], int(grade['assignment_id']), i.section_id))
+                        # print('--------------', sc.get_assignment([self.api_key, self.api_secret], int(grade['assignment_id']), i.section_id))
             db.session.commit()
 
     def get_followed_courses(self):
@@ -336,6 +342,14 @@ class User(UserMixin, db.Model):
             latest.append(Assignment.query.filter_by(id=g.assignment_id).first())
         return latest
 
+    def update(self):
+        print('syncing ', self.username)
+        self.update_sections()
+        self.update_assignments()
+        self.update_events()
+        self.set_avatar()
+        self.update_grades()
+
 
 class Section(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -357,11 +371,8 @@ class Section(db.Model):
             if assignment.title == 'Sample Assignment':
                 break
             else:
-                if assignment.due is None:
+                if assignment.due is not None and assignment.due >= datetime.now():
                     upcoming.append(assignment)
-                else:
-                    if assignment.due >= datetime.now():
-                        upcoming.append(assignment)
         return upcoming
 
     def get_section_grade(self, user):
@@ -418,6 +429,7 @@ class Assignment(db.Model):
     posts = db.relationship('Post', backref='assignment', lazy='dynamic')
     grades = db.relationship('AssignmentGrade', backref='assignment', lazy='dynamic')
     sc_comments = db.relationship('SchoologyAssignmentComment', backref='xxx', lazy='dynamic', order_by='desc(SchoologyAssignmentComment.timestamp)')
+    notes = db.relationship('AssignmentNotes', backref='assignment', lazy='dynamic')
 
     def update_title(self, text):
         self.title = text
@@ -563,7 +575,6 @@ class Commit(db.Model):
             return 'Below Average (' + str(avg) + ') minutes'
 
 
-
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
@@ -608,6 +619,7 @@ class Post(db.Model):
     def get_liked(self):
         return [i.username for i in self.likes]
 
+
 class SchoologyAssignmentComment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     schoology_id = db.Column(db.Integer)
@@ -625,6 +637,7 @@ class SchoologyAssignmentComment(db.Model):
         self.commenter_link = link
         self.likes = likes
         self.comment = comment
+
 
 class CommitComment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -655,6 +668,7 @@ class CommitComment(db.Model):
     def get_liked(self):
         return [i.username for i in self.likes]
 
+
 class PostComment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     commit_id = db.Column(db.Integer(), db.ForeignKey('post.id'))
@@ -683,3 +697,13 @@ class PostComment(db.Model):
 
     def get_liked(self):
         return [i.username for i in self.likes]
+
+
+class AssignmentNotes(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    assignment_id = db.Column(db.Integer, db.ForeignKey('assignment.id'))
+    body = db.Column(db.String())
+
+    def update_body(self, text):
+        self.body = text

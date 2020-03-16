@@ -11,9 +11,9 @@
         <a href="{{ url_for('section', id=post.get_assignment_course()[1]) }}"> {{ post.get_assignment_course()[0] }} </a>
         -->
         <a href="{{ url_for('assignment', id=post.assignment_id) }}"> {{ post.get_assignment_title() }} </a>
-        </span> -->
+         -->
         {% endif %}
-        <a href="#" data-toggle="tooltip" title="{{ post.get_tooltip() }}" data-placement="bottom"><span class="time_spent" style="color: {{ colorify(post) }}"> {{ convert_time(post.time_spent) }} </span></a>
+        <a href="#" data-toggle="tooltip" title="{{ post.get_tooltip() }}" data-placement="bottom"><span class="time_spent" style="color: {{ colorify(post) }}"> {{ convert_time(post.time_spent) }} </span></a></span>
 
     </div>
     <div class="post_body">
@@ -21,17 +21,57 @@
     </div>
     <div class="post_time">
          {{ time(post.timestamp) }}
-            <span style="padding-left: 30px" onclick="myFunction()">
-               {% if post.likes|length > 0 %}  {{post.likes|length}} {% endif %}
-            </span>
-        {% if post.is_liked(current_user) %}
-            <span style="padding-left: 5px"><a href="{{url_for('unlike', type='commit', id=post.id) }}"><img src="https://img.icons8.com/metro/26/000000/thumbs-down.png" class="img_tiny">Unlike</a></span>
-        {% elif not post.is_liked(current_user) %}
-            <span style="padding-left: 30px"><a href="{{url_for('like', type='commit', id=post.id) }}"><img src="https://img.icons8.com/pastel-glyph/64/000000/facebook-like.png" class="img_tiny">Like</a></span>
+        {% if post.likes|length == 1 %}
+            {% set likes = 'Like' %}
+        {% else %}
+            {% set likes = 'Likes' %}
         {% endif %}
-        <button type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target='#commitModal-{{ post.id }}'>
-            <span style="size: 5px"> MORE </span>
+        {% if post.comments.count() == 1 %}
+            {% set comments = 'Comment' %}
+        {% else %}
+            {% set comments = 'Comments' %}
+        {% endif %}
+
+        {% if post.likes|length > 0 %}
+            <button type="button"
+                               id="popover-test"
+                               class="btn btn-sm btn-link"
+                               data-toggle="popover"
+                               data-html="true"
+                               data-content="<table class='table table-striped' style='max-height:300px; overflow:auto'>
+                                                {% for user in post.likes %}
+                                                    <tr onclick='window.location='/user/{{ user.username }}''>
+                                                    <td width='20%'><img class='img_small' src='{{ user.picture_url }}'></td>
+                                                    <td width='80%' style='text-align: center'><a href='{{ url_for('user', username=user.username) }}'><h4>{{ user.username }}</h4></a></td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </table>"
+                               data-placement="right">
+                            {{post.likes|length}} {{likes}}
+                       </button>
+            <script>$("[data-toggle=popover]").popover();</script>
+            <script>
+                $('html').on('mouseup', function(e) {
+                    if(!$(e.target).closest('.popover').length) {
+                        $('.popover').each(function(){
+                            $(this.previousSibling).popover('hide');
+                        });
+                    }
+                });
+            </script>
+        {% endif %}
+
+        {% if post.is_liked(current_user) %}
+            <span style="padding-left: 1px"><a href="{{url_for('unlike', type='commit', id=post.id) }}"><img src="https://img.icons8.com/metro/26/000000/thumbs-down.png" class="img_tiny">Unlike</a></span>
+        {% else %}
+            <span style="padding-left: 1px"><a href="{{url_for('like', type='commit', id=post.id) }}"><img src="https://img.icons8.com/pastel-glyph/64/000000/facebook-like.png" class="img_tiny">Like</a></span>
+        {% endif %}
+        <button type="button" class="btn btn-link btn-sm" data-toggle="modal" data-target='#commitModal-{{ post.id }}' style="margin-left: 25px">
+            <img src="https://img.icons8.com/material-sharp/24/000000/speech-bubble-with-dots.png" class="img_tiny"> {{ post.comments.count() }} {{comments}} </span>
         </button>
+        {% if post.author.username == current_user.username %}
+            <a style="color: red" class="close" href="/delete_post/commit/{{ post.id }}">&times;</a>
+        {% endif %}
         <div id="commitModal-{{ post.id }}" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -42,6 +82,25 @@
                 <div class="modal-body" style="height: 500px">
                     <div class="commit">
                         {% include '_comment_modal.html' %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div id="commitLikesModal-{{ post.id }}" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Likes on {{ post.author.username }}'s Commit</h4>
+                </div>
+                <div class="modal-body" style="height: 500px">
+                    <div class="commit">
+                        <table class="table table-hover">
+                            {% for user in post.likes %}
+                                <tr onclick="window.location='/user/{{ user.username }}'">{% include 'user_likes_preview.html' %}</tr>
+                            {% endfor %}
+                        </table>
                     </div>
                 </div>
             </div>

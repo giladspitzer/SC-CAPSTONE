@@ -1,4 +1,38 @@
-2020-02-24 14:14:51,581 ERROR: Exception on /index [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
+2020-03-15 12:25:59,078 ERROR: Exception on /retrieve_data [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
+Traceback (most recent call last):
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1967, in finalize_request
+    response = self.make_response(rv)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2096, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2020-03-15 12:35:29,015 ERROR: Exception on /retrieve_data [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
+Traceback (most recent call last):
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1967, in finalize_request
+    response = self.make_response(rv)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2096, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2020-03-15 12:35:39,840 ERROR: Exception on /retrieve_data [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
+Traceback (most recent call last):
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1967, in finalize_request
+    response = self.make_response(rv)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2096, in make_response
+    raise TypeError(
+TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
+2020-03-15 12:36:41,556 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-15 12:45:01,338 ERROR: Exception on /retrieve_data [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
 Traceback (most recent call last):
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,49 +46,18 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_login/utils.py", line 261, in decorated_view
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/routes.py", line 109, in index
-    return render_template('index.html', title='Home', posts=posts.items, commit_form=commit_form, comment_form=comment_form, next_url=next_url, prev_url=prev_url,
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
-    return _render(
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
-    rv = template.render(context)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 3, in block "doc"
-    <html{% block html_attribs %}{% endblock html_attribs %}>
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 11, in block "html"
-    {%- endblock metas %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 13, in block "body"
-    {%- block styles %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/base.html", line 65, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/index.html", line 13, in block "app_content"
-    {% include '_commit.html' %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/_commit.html", line 44, in top-level template code
-    {% include '_comment_modal.html' %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/_comment_modal.html", line 53, in top-level template code
-    <div style="max-height: 75px; max-width: 475px; margin-right: 0;" class="comment_form"> {{ wtf.form_field(comment_form.post, style='resize:none', placeholder='Comment something...') }}</div>
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/runtime.py", line 679, in _invoke
-    rv = self._func(*arguments)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 27, in template
-    {% endmacro %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/environment.py", line 471, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'app.forms.CommentForm object' has no attribute 'post'
-2020-02-24 14:15:13,261 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-24 14:15:14,179 ERROR: Exception on /index [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/routes.py", line 333, in retrieve_data
+    current_user.update_assignments()
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/models.py", line 197, in update_assignments
+    comments = sc.get_assignment_comments([self.api_key, self.api_secret], s.id, a.id)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/apiclean.py", line 43, in get_assignment_comments
+    return authenticate(data[0], data[1]).get_assignment_comments(sectionid, assignmentid)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/schoologyapi/api.py", line 852, in get_assignment_comments
+    return [Assignment(raw) for raw in self._get('sections/%s/assignments/%s/comments' % (section_id, assignment_id))['comment']]
+KeyError: 'comment'
+2020-03-15 12:45:01,423 ERROR: Exception on /retrieve_data [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
 Traceback (most recent call last):
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -68,45 +71,35 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_login/utils.py", line 261, in decorated_view
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/routes.py", line 109, in index
-    return render_template('index.html', title='Home', posts=posts.items, commit_form=commit_form, comment_form=comment_form, next_url=next_url, prev_url=prev_url,
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
-    return _render(
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
-    rv = template.render(context)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1090, in render
-    self.environment.handle_exception()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
-    reraise(*rewrite_traceback_stack(source=source))
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
-    raise value.with_traceback(tb)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/index.html", line 1, in top-level template code
-    {% extends "base.html" %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/base.html", line 1, in top-level template code
-    {% extends 'bootstrap/base.html' %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 1, in top-level template code
-    {% block doc -%}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 3, in block "doc"
-    <html{% block html_attribs %}{% endblock html_attribs %}>
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 11, in block "html"
-    {%- endblock metas %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 13, in block "body"
-    {%- block styles %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/base.html", line 65, in block "content"
-    {% block app_content %}{% endblock %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/index.html", line 13, in block "app_content"
-    {% include '_commit.html' %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/_commit.html", line 44, in top-level template code
-    {% include '_comment_modal.html' %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/_comment_modal.html", line 53, in top-level template code
-    <div style="max-height: 75px; max-width: 475px; margin-right: 0;" class="comment_form"> {{ wtf.form_field(comment_form.comment_post, style='resize:none', placeholder='Comment something...') }}</div>
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/runtime.py", line 679, in _invoke
-    rv = self._func(*arguments)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/wtf.html", line 27, in template
-    {% endmacro %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/environment.py", line 471, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'app.forms.CommentForm object' has no attribute 'comment_post'
-2020-02-24 14:16:00,572 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/routes.py", line 333, in retrieve_data
+    current_user.update_assignments()
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/models.py", line 201, in update_assignments
+    name = person.name_display
+AttributeError: 'User' object has no attribute 'name_display'
+2020-03-15 12:45:01,617 ERROR: Exception on /retrieve_data [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
+Traceback (most recent call last):
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/routes.py", line 333, in retrieve_data
+    current_user.update_assignments()
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/models.py", line 197, in update_assignments
+    comments = sc.get_assignment_comments([self.api_key, self.api_secret], s.id, a.id)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/apiclean.py", line 43, in get_assignment_comments
+    return authenticate(data[0], data[1]).get_assignment_comments(sectionid, assignmentid)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/schoologyapi/api.py", line 852, in get_assignment_comments
+    return [Assignment(raw) for raw in self._get('sections/%s/assignments/%s/comments' % (section_id, assignment_id))['comment']]
+KeyError: 'comment'

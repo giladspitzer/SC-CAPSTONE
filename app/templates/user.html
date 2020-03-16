@@ -5,19 +5,98 @@
         <tr>
             <td style="width: 20%"><img src="{{ user.picture_url }}"></td>
             <td style="width: 50%">
-                <h1>{{ user.username }}</h1>
-                {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
-                {% if user.last_seen %}<p>Last seen on: {{ time(user.last_seen) }}</p>{% endif %}
-                <p>{{ user.followers.count() }} followers, {{ user.followed.count() }} following.</p>
-                {% if user == current_user %}
-                    <p><a href="{{ url_for('edit_profile') }}">Edit your profile</a></p>
-                    <p> <a href="{{ url_for('sync') }}"> Sync with Schoology </a></p>
-
-                {% elif not current_user.is_following(user) %}
-                    <p><a href="{{ url_for('follow', username=user.username) }}">Follow</a></p>
-                {% else %}
-                    <p><a href="{{ url_for('unfollow', username=user.username) }}">Unfollow</a></p>
-                {% endif %}
+                <div class="user-info" style="margin-left: 10px">
+                    {% if user == current_user %}
+                        {% set text = 'Edit Profile' %}
+                        {% set link = url_for("edit_profile") %}
+                    {% else %}
+                        {% if not current_user.is_following(user) %}
+                            {% set text = 'Follow' %}
+                            {% set link = url_for("follow", username=user.username) %}
+                        {% else %}
+                            {% set text = 'Unfollow' %}
+                            {% set link = url_for("unfollow", username=user.username) %}
+                        {% endif %}
+                    {% endif %}
+                    <h1>{{ user.username }} <span style="font-size: 14px; margin-left:3px; display: inline-block; font-weight: normal">
+                        <p><a href="{{ link }}">{{text}}</a></p>
+                    </span> </h1>
+                    {% if current_user.username in request.path %}
+                        {% set followers_title = 'Your followers: (' + user.followers.count()|string + ')'  %}
+                        {% set following_title = 'Your following: (' + user.followed.count()|string + ')'  %}
+                    {% else %}
+                        {% set followers_title = user.username + "'s followers: (" + user.followers.count()|string + ')' %}
+                        {% set following_title = user.username + "'s following: (" + user.followed.count()|string + ')'  %}
+                    {% endif %}
+                    <button id="followers" type="button" class="btn btn-default btn-sm">
+                        {{ user.commits.count() }}<br>Posts
+                    </button>
+                    <button id="followers" type="button"
+                                       class="btn btn-default btn-sm"
+                                       data-toggle="popover"
+                                        title="{{ followers_title }}"
+                                       data-html="true"
+                                       data-content="{% if current_user.username in request.path %}<p style='text-align: center; font-size: 12px'>Click the <span style='color: red'> &times;</span> next to a user to delete them as a follower</p>{% endif %}
+                                                <table class='table table-striped'>
+                                                    {% for user in user.followers %}
+                                                        <tr onclick='window.location='/user/{{ user.username }}''>
+                                                            <td width='10%'><img class='img_small' src='{{ user.picture_url }}' ></td>
+                                                            <td width='80%' style='text-align: center'><a href='{{ url_for('user', username=user.username) }}'><h4>{{ user.username }}</h4></a></td>
+                                                            <td with='10%' style='text-align: center; padding-top: 18px'>
+                                                                    {% if current_user.username in request.path %}
+                                                                        <a style='color: red' class='close' href='{{ url_for('delete_follower', username=user.username) }}'> &times; </a>
+                                                                    {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </table>"
+                                       data-placement="right">
+                                    {{ user.followers.count() }}<br>Followers
+                               </button>
+                    <script>$("[data-toggle=popover]").popover();</script>
+                    <script>
+                        $('html').on('mouseup', function(e) {
+                            if(!$(e.target).closest('.popover').length) {
+                                $('.popover').each(function(){
+                                    $(this.previousSibling).popover('hide');
+                                });
+                            }
+                        });
+                    </script>
+                    <button id="following" type="button"
+                                       class="btn btn-default btn-sm"
+                                       data-toggle="popover"
+                                        title="{{ following_title }}"
+                                       data-html="true"
+                                       data-content="{% if current_user.username in request.path %}<p style='text-align: center; font-size: 12px'>Click the <span style='color: red'> &times;</span> next to a user to unfollow them</p>{% endif %}
+                                                <table class='table table-striped'>
+                                                    {% for user in user.followed %}
+                                                        <tr onclick='window.location='/user/{{ user.username }}''>
+                                                            <td width='10%'><img class='img_small' src='{{ user.picture_url }}' ></td>
+                                                            <td width='80%' style='text-align: center'><a href='{{ url_for('user', username=user.username) }}'><h4>{{ user.username }}</h4></a></td>
+                                                            <td with='10%' style='text-align: center; padding-top: 18px'>
+                                                                    {% if current_user.username in request.path %}
+                                                                        <a style='color: red' class='close' href='{{ url_for('unfollow', username=user.username) }}'> &times; </a>
+                                                                    {% endif %}
+                                                            </td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </table>"
+                                       data-placement="right">
+                                    {{ user.followed.count() }}<br>Following
+                               </button>
+                    <script>$("[data-toggle=popover]").popover();</script>
+                    <script>
+                        $('html').on('mouseup', function(e) {
+                            if(!$(e.target).closest('.popover').length) {
+                                $('.popover').each(function(){
+                                    $(this.previousSibling).popover('hide');
+                                });
+                            }
+                        });
+                    </script>
+                    <div class="post_body" style="max-width: 444px; padding-left: 0px">{{ user.about_me }}</div>
+                </div>
             </td>
             {% if current_user == user %}
             <td style="width: 30%" rowspan="2">
@@ -25,15 +104,31 @@
             </td>
             {% endif %}
         </tr>
-        <tr style="width: fit-content">
+        {% if user == current_user or current_user in user.followers %}
+        <tr>
             <td colspan="2">
                 <table class="table table-hover">
-                    {% for post in current_user.commits %}
+                    {% for post in posts %}
                         <tr>{% include '_commit.html' %}</tr>
                     {% endfor %}
                 </table>
+                <div style="padding: 10px">
+                    {% if prev_url %}
+                        <a href="{{ prev_url }}" style="float: left"><--- Newer posts</a>
+                    {% endif %}
+
+                    {% if next_url %}
+                        <a href="{{ next_url }}" style="float:right;">Older posts ---></a>
+                    {% endif %}
+                </div>
             </td>
         </tr>
+        {% else %}
+            <tr><td colspan="2">
+                <br><br><br><br>
+                <div style="text-align: center"><b>You cannot view {{user.username}}'s post until you follow them</b></div>
+            </td></tr>
+        {% endif %}
     </table>
 
 

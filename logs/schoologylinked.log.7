@@ -1,8 +1,8 @@
-2020-02-20 09:43:22,371 ERROR: Exception on /status [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
+2020-03-12 16:02:28,392 ERROR: Exception on /assignment/493 [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
 Traceback (most recent call last):
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1245, in _execute_context
     self.dialect.do_execute(
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 581, in do_execute
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 588, in do_execute
     cursor.execute(statement, parameters)
 sqlite3.OperationalError: database is locked
 
@@ -21,25 +21,25 @@ Traceback (most recent call last):
     rv = self.preprocess_request()
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2241, in preprocess_request
     rv = func()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/routes.py", line 61, in before_request
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/routes.py", line 105, in before_request
     db.session.commit()
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
     return getattr(self.registry(), name)(*args, **kwargs)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1027, in commit
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1036, in commit
     self.transaction.commit()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 494, in commit
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 503, in commit
     self._prepare_impl()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 473, in _prepare_impl
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 482, in _prepare_impl
     self.session.flush()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2470, in flush
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2479, in flush
     self._flush(objects)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2608, in _flush
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2617, in _flush
     transaction.rollback(_capture_exception=True)
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 68, in __exit__
     compat.reraise(exc_type, exc_value, exc_tb)
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 153, in reraise
     raise value
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2568, in _flush
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2577, in _flush
     flush_context.execute()
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/unitofwork.py", line 422, in execute
     rec.execute(self)
@@ -51,7 +51,7 @@ Traceback (most recent call last):
     c = cached_connections[connection].execute(
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 982, in execute
     return meth(self, multiparams, params)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 293, in _execute_on_connection
     return connection._execute_clauseelement(self, multiparams, params)
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1095, in _execute_clauseelement
     ret = self._execute_context(
@@ -65,9 +65,27 @@ Traceback (most recent call last):
     raise value.with_traceback(tb)
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1245, in _execute_context
     self.dialect.do_execute(
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 581, in do_execute
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 588, in do_execute
     cursor.execute(statement, parameters)
 sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
 [SQL: UPDATE user SET last_seen=? WHERE user.id = ?]
-[parameters: ('2020-02-20 17:43:17.223181', 1)]
+[parameters: ('2020-03-12 23:02:23.294176', 1)]
 (Background on this error at: http://sqlalche.me/e/e3q8)
+2020-03-12 16:03:34,961 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:04:24,583 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:04:39,726 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:06:08,760 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:11:16,671 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:20:39,932 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:22:09,525 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:22:24,514 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:22:39,308 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:27:38,814 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:29:42,613 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:30:48,001 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:31:20,813 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:32:34,506 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:34:02,564 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:35:12,354 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:38:33,576 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-12 16:39:50,499 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]

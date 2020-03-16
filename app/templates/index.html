@@ -5,16 +5,23 @@
     <table class="table">
         <tr>
             <td style="width: 70%">
-                <h4>Post a time commit:</h4>
                 {% include '_commit_form.html' %}
                 <table class="table table-hover">
-                    {% for post in posts|sort(attribute='timestamp', reverse=True) %}
+                    {% for post in posts %}
                         <tr style="width: 70%">
                             {% include '_commit.html' %}
                         </tr>
                     {% endfor %}
                 </table>
-                <br>
+                <div style="padding: 10px">
+                    {% if prev_url %}
+                        <a href="{{ prev_url }}" style="float: left"><--- Newer posts</a>
+                    {% endif %}
+
+                    {% if next_url %}
+                        <a href="{{ next_url }}" style="float:right;">Older posts ---></a>
+                    {% endif %}
+                </div>
             </td>
             <td style="width: 30%; padding: 5px">
                 {% include 'sidebar.html' %}
@@ -22,13 +29,5 @@
         </tr>
     </table>
 
-
 {% endblock %}
 
-{#        {% if prev_url %}#}
-{#            <a href="{{ prev_url }}">Newer posts</a>#}
-{#        {% endif %}#}
-{##}
-{#        {% if next_url %}#}
-{#            <a href="{{ next_url }}">Older posts</a>#}
-{#        {% endif %}#}

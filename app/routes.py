@@ -3,7 +3,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm, PostForm, CommitForm, CommentForm
-from app.models import User, Assignment, AU_Relationships, Event, EU_Relationships, Commit, Section, Post, CommitComment
+from app.models import User, Assignment, AU_Relationships, Event, EU_Relationships, Commit, Section, Post, CommitComment, AssignmentNotes
 from datetime import datetime
 from app import general_url
 from functools import wraps
@@ -18,19 +18,31 @@ def set_options(form, section, assignment):
     form.course.choices = [(section.id, section.title)]
     form.assignment.choices = [(assignment.id, assignment.title)]
 
-@app.route('/testing')
+
+@app.route('/sync_all/<password>')
 @login_required
-def testing():
+def sync_all(password):
+    if password == 'SyncAllPassword123':
+        users = User.query.all()
+        for user in users:
+            print('--------------------updating', user.username)
+            user.update()
+    else:
+        flash('Innacurate Credentials')
+        return render_template(request.referrer)
     return render_template('testing_chat.html', posts=Post.query.filter_by(assignment_id=1).all())
 
 @app.route("/create_post/<option>/<id>", methods=['POST'])
 @login_required
 def create_post(option, id):
-    print(id)
     if option == 'commit_comment':
         form = CommentForm()
         if form.is_submitted():
-            addition = CommitComment(commit_id=id, user_id=current_user.id, comment=form.post.data)
+            if len(form.comment_post.data) >= 140 or len(form.comment_post.data) <= 5:
+                flash('Your post must be between 5 and 140 characters!')
+                return redirect(request.referrer)
+            else:
+                addition = CommitComment(commit_id=id, user_id=current_user.id, comment=form.comment_post.data)
     else:
         if option == 'commit':
             form = CommitForm()
@@ -39,15 +51,53 @@ def create_post(option, id):
         assignment_id = form.assignment.data
         schoology_id = Assignment.query.filter_by(id=assignment_id).first().schoology_id
         if form.is_submitted() and option == 'commit':
-            addition = Commit(user_id=int(current_user.id), assignment_id=int(assignment_id), schoology_id=int(schoology_id),
-                    body=str(form.post.data), time_spent=int(form.time_spent.data))
+            if len(form.post.data) <= 5:
+                flash('Your post must be longer than 5 characters!')
+                return redirect(request.referrer)
+            elif len(form.post.data) >= 140:
+                flash('Your post must be shorter than 140 characters!')
+                return redirect(request.referrer)
+            elif type(form.time_spent.data) != int:
+                flash('Your time spent must be a number')
+                return redirect(request.referrer)
+            elif schoology_id is None:
+                flash('You cannot post about a sample assignment')
+                return redirect(request.referrer)
+            else:
+                addition = Commit(user_id=int(current_user.id), assignment_id=int(assignment_id), schoology_id=int(schoology_id),
+                        body=str(form.post.data), time_spent=int(form.time_spent.data))
         if form.is_submitted() and option == 'post':
-            addition = Post(user_id=int(current_user.id), assignment_id=int(assignment_id), schoology_id=int(schoology_id),
+            if len(form.post.data) <= 12:
+                flash('Your post must be longer than 12 characters!')
+                return redirect(request.referrer)
+            elif schoology_id is None:
+                flash('You cannot post about a sample assignment')
+                return redirect(request.referrer)
+            else:
+                addition = Post(user_id=int(current_user.id), assignment_id=int(assignment_id), schoology_id=int(schoology_id),
                                 body=form.post.data)
 
     db.session.add(addition)
     db.session.commit()
     flash('Congratulations for posting!')
+    return redirect(request.referrer)
+
+@app.route("/delete_post/<type>/<id>")
+@login_required
+def delete_post(type, id):
+    if type.lower() == 'post':
+        post = Post.query.filter_by(id=id).first()
+    elif type.lower() == 'commit':
+        post = Commit.query.filter_by(id=id).first()
+    elif type.lower() == 'commit_comment':
+        post = CommitComment.query.filter_by(id=id).first()
+    else:
+        flash('nothing to delete')
+        return redirect(request.referrer)
+
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your' + str(type).lower() + 'comment has been deleted')
     return redirect(request.referrer)
 
 
@@ -141,7 +191,7 @@ def register():
         return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data)
+        user = User(username=form.username.data.capitalize(), email=form.email.data)
         user.set_password(form.password.data)
         user.set_api_info(form.consumer_key.data, form.consumer_secret.data)
         user.set_outeruid(form.consumer_key.data, form.consumer_secret.data)
@@ -160,14 +210,14 @@ def user(username):
     comment_form = CommentForm()
     if comment_form.is_submitted():
         comment_form = CommentForm(formdata=None)
-    # page = request.args.get('page', 1, type=int)
-    # commits = user.commits.paginate(
-    #     page, app.config['POSTS_PER_PAGE'], False)
-    # next_url = url_for('explore', page=commits.next_num) \
-    #     if commits.has_next else None
-    # prev_url = url_for('explore', page=commits.prev_num) \
-    #     if commits.has_prev else None
-    return render_template("user.html", user=user, comment_form=comment_form)
+    page = request.args.get('page', 1, type=int)
+    commits = user.commits.paginate(
+        page, app.config['POSTS_PER_PAGE'], False)
+    next_url = url_for('explore', page=commits.next_num) \
+        if commits.has_next else None
+    prev_url = url_for('explore', page=commits.prev_num) \
+        if commits.has_prev else None
+    return render_template("user.html", user=user, comment_form=comment_form, posts=commits.items, next_url=next_url, prev_url=prev_url)
 
 
 @app.route('/assignment/<id>', methods=['GET', 'POST'])
@@ -209,7 +259,7 @@ def edit_profile():
         current_user.api_secret = form.consumer_secret.data
         db.session.commit()
         flash('Your changes have been made')
-        return redirect(url_for('edit_profile'))
+        return redirect(request.referrer)
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
@@ -279,11 +329,20 @@ def section(id):
 @app.route('/sync')
 @login_required
 def sync():
-    # current_user.update_sections()
-    # current_user.update_assignments()
-    # current_user.update_events()
-    # current_user.set_avatar()
+    return render_template('sync.html', title='Syncing with Schoology')
+
+
+@app.route('/retrieve_data')
+@login_required
+def retrieve_data():
+    print('syncing ', current_user.username)
+    current_user.update_sections()
+    current_user.update_assignments()
+    current_user.update_events()
+    current_user.set_avatar()
     current_user.update_grades()
+    flash('All synced up!')
+    return render_template('sync.html')
 
 
 @app.route('/follow/<username>')
@@ -314,8 +373,17 @@ def unfollow(username):
         return redirect(url_for('user', username=username))
     current_user.unfollow(user)
     db.session.commit()
-    flash('You are not following {}.'.format(username))
+    flash('You are no longer following {}.'.format(username))
     return redirect(url_for('user', username=username))
+
+@app.route('/delete_follower/<username>')
+@login_required
+def delete_follower(username):
+    user = User.query.filter_by(username=username).first()
+    current_user.delete_follower(user)
+    db.session.commit()
+    flash(str(username) + ' no longer follows you')
+    return redirect(url_for('user', username=current_user.username))
 
 @app.route('/explore')
 @login_required
@@ -361,8 +429,26 @@ def like(type, id):
 @login_required
 def unlike(type, id):
     if type == 'commit':
-        commit = Commit.query.filter_by(id=int(id)).first_or_404()
-        commit.unlike(current_user)
-        flash('Post Unliked')
+        format = Commit.query.filter_by(id=int(id)).first_or_404()
+    elif type == 'commit_comment':
+        format = CommitComment.query.filter_by(id=int(id)).first_or_404()
+    elif type == 'post':
+        format = Post.query.filter_by(id=int(id)).first_or_404()
+    format.unlike(current_user)
+    flash('Post Unliked')
+    return redirect(request.referrer)
+
+
+@app.route('/assignment_comment/<uid>/<assignment>', methods=['GET', 'POST'])
+@login_required
+def assignment_comment(uid, assignment):
+    if request.method == 'POST':
+        if AssignmentNotes.query.filter_by(user_id=int(uid), assignment_id=int(assignment)).count() == 0:
+            note = AssignmentNotes(user_id=int(uid), assignment_id=int(assignment), body=str(request.form['notes']))
+        else:
+            note = AssignmentNotes.query.filter_by(user_id=int(uid), assignment_id=int(assignment)).first()
+            note.update_body(str(request.form['notes']))
+        db.session.add(note)
+        db.session.commit()
 
     return redirect(request.referrer)

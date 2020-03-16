@@ -1,7 +1,7 @@
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
 {% import 'bootstrap/wtf.html' as wtf %}
 
-<table class="table" style="margin-bottom: 0">
+<table class="table" style="margin-bottom: 0; height: 139px; overflow: auto">
     <tr>
         <td width="10%"><img class="img_med" src="{{ post.author.picture_url }}" ></td>
         <td width="90%">
@@ -9,15 +9,9 @@
                 <span class="post_class_info" id="post_class_info">
                 <a href="{{ url_for('user', username=post.author.username) }}"> {{ post.author.username }} </a>
                 -->
-                {% if 'index' in request.path %}
-                <a href="{{ url_for('section', id=post.get_assignment_course()[1]) }}"> {{ post.get_assignment_course()[0] }} </a>
-                -->
                 <a href="{{ url_for('assignment', id=post.assignment_id) }}"> {{ post.get_assignment_title() }} </a>
-                </span> -->
-                {% endif %}
-                <button type="button" class="btn btn-default" data-toggle="popover" data-placement="bottom" title="Example popover" data-content="Some content in Popover on bottom">
-                    <span class="time_spent" style="color: {{ colorify(post) }}"> {{ convert_time(post.time_spent) }} </span>
-                </button>
+                 -->
+                <a href="#" data-toggle="tooltip" title="{{ post.get_tooltip() }}" data-placement="bottom"><span class="time_spent" style="color: {{ colorify(post) }}"> {{ convert_time(post.time_spent) }} </span></a></span>
 
             </div>
             <div class="post_body">
@@ -25,23 +19,84 @@
             </div>
             <div class="post_time">
                  {{ time(post.timestamp) }}
-                {% if post.is_liked(current_user) %}
-                    <span style="padding-left: 30px"><a href="{{url_for('unlike', type='commit', id=post.id) }}"><img src="https://img.icons8.com/metro/26/000000/thumbs-down.png" class="img_tiny">Unlike</a> <div style="padding-left: 2px" class="popup" onclick="myFunction()">{{post.likes|length}}
-                        <span class="popuptext" id="myPopup">{{ post.get_liked() }}</span>
-                    </div></span>
-                {% elif not post.is_liked(current_user) %}
-                    <span style="padding-left: 30px"><a href="{{url_for('like', type='commit', id=post.id) }}"><img src="https://img.icons8.com/pastel-glyph/64/000000/facebook-like.png" class="img_tiny">Like</a> <div style="padding-left: 2px" class="popup" onclick="myFunction()">{{post.likes|length}}
-                        <span class="popuptext" id="myPopup">{{ post.get_liked() }}</span>
-                    </div></span>
+                {% if post.likes|length == 1 %}
+                    {% set likes = 'Like' %}
+                {% else %}
+                    {% set likes = 'Likes' %}
                 {% endif %}
 
-                <span style="padding-left: auto"><a href="#comment_post"><img src="https://img.icons8.com/material-sharp/24/000000/speech-bubble-with-dots.png" class="img_tiny">Comment</a> {{ post.comments.count() }}</span>
+                {% if post.comments.count() == 1 %}
+                    {% set comments = 'Comment' %}
+                {% else %}
+                    {% set comments = 'Comments' %}
+                {% endif %}
+
+                <button type="button" class="btn btn-link btn-sm" style="margin-left: 20px; padding-right: 0px" data-target='#commitLikesModal-{{ post.id }}' data-toggle="modal">
+                   {% if post.likes|length > 0 %}
+                       <button type="button"
+                               id="popover-test"
+                               class="btn btn-sm btn-link"
+                               data-toggle="popover"
+                               data-html="true"
+                               data-content="<table class='table table-striped' style='max-height:300px; overflow:auto'>
+                                                {% for user in post.likes %}
+                                                    <tr>
+                                                    <td width='20%'><img class='img_small' src='{{ user.picture_url }}'></td>
+                                                    <td width='80%' style='text-align: center'><a href='{{ url_for('user', username=user.username) }}'><h4>{{ user.username }}</h4></a></td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </table>"
+                               data-placement="left">
+                            {{post.likes|length}} {{likes}}
+                       </button>
+                       <script>$("[data-toggle=popover]").popover();</script>
+                   {% endif %}
+                </button>
+                <div id="commitLikesModal-{{ post.id }}" class="modal fade bd-example-modal-sm" role="dialog">
+                <div id="myPopoverContent">
+                     <table class='table table-hover'>
+                        {% for user in post.likes %}
+                            <tr onclick='window.location="/user/{{ user.username }}"'>{% include 'user_likes_preview.html' %}</tr>
+                        {% endfor %}
+                    </table>
+                </div>
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Likes on {{ post.author.username }}'s Commit</h4>
+                </div>
+                <div class="modal-body" style="height: 500px">
+                    <div class="commit">
+                        <table class="table table-hover">
+                            {% for user in post.likes %}
+                                <tr onclick="window.location='/user/{{ user.username }}'">{% include 'user_likes_preview.html' %}</tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+                {% if post.is_liked(current_user) %}
+                    <span style="padding-left: 1px"><a href="{{url_for('unlike', type='commit', id=post.id) }}"><img src="https://img.icons8.com/metro/26/000000/thumbs-down.png" class="img_tiny">Unlike</a></span>
+                {% else %}
+                    <span style="padding-left: 1px"><a href="{{url_for('like', type='commit', id=post.id) }}"><img src="https://img.icons8.com/pastel-glyph/64/000000/facebook-like.png" class="img_tiny">Like</a></span>
+                {% endif %}
+
+                <button type="button" class="btn btn-link btn-sm" data-target='#comment_post' style="margin-left: 30px">
+                    <img src="https://img.icons8.com/material-sharp/24/000000/speech-bubble-with-dots.png" class="img_tiny"> {{ post.comments.count() }} {{comments}} </span>
+                </button>
+
+                {% if post.author.username == current_user.username %}
+                    <a style="color: red" class="close" href="/delete_post/commit/{{ post.id }}">&times;</a>
+                {% endif %}
             </div>
         </td>
     </tr>
 </table>
 
-<div class="comments" style="padding-left: 60px; height: 300px; overflow: auto">
+<div class="comments" style="margin-left: 60px; height: 270px; overflow: auto">
     <table class="table table-hover" >
         {% for comment in post.comments %}
             <tr>{% include '_comment.html' %}</tr>
@@ -49,7 +104,14 @@
     </table>
 </div>
 
-    <form method="POST" action="{{ url_for('create_post', option='commit_comment', id=post.id)}}">
-        <div style="max-height: 75px; max-width: 475px; margin-right: 0;" class="comment_form"> {{ wtf.form_field(comment_form.comment_post, style='resize:none', placeholder='Comment something...') }}</div>
-        {{ wtf.form_field(comment_form.submit, style='padding:10px; float:right; margine:10px') }}
+    <form method="POST" action="{{ url_for('create_post', option='commit_comment', id=post.id)}}" style="bottom: inherit">
+            {{ wtf.form_field(comment_form.comment_post, style='resize:none; max-height: 75px; max-width: 450px; margin-right: 0px; position:fixed;', placeholder='Comment something...') }}
+            {{ wtf.form_field(comment_form.submit, style='padding:10px; position:absolute; bottom:2.5%; right:5%') }}
     </form>
+
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+</script>

@@ -1,13 +1,4 @@
-2020-02-20 09:43:26,473 ERROR: Exception on /status [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
-Traceback (most recent call last):
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1245, in _execute_context
-    self.dialect.do_execute(
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 581, in do_execute
-    cursor.execute(statement, parameters)
-sqlite3.OperationalError: database is locked
-
-The above exception was the direct cause of the following exception:
-
+2020-03-13 14:58:45,649 ERROR: Exception on /index [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
 Traceback (most recent call last):
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -17,70 +8,72 @@ Traceback (most recent call last):
     reraise(exc_type, exc_value, tb)
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
     raise value
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1947, in full_dispatch_request
-    rv = self.preprocess_request()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2241, in preprocess_request
-    rv = func()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/routes.py", line 61, in before_request
-    db.session.commit()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/scoping.py", line 162, in do
-    return getattr(self.registry(), name)(*args, **kwargs)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 1027, in commit
-    self.transaction.commit()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 494, in commit
-    self._prepare_impl()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 473, in _prepare_impl
-    self.session.flush()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2470, in flush
-    self._flush(objects)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2608, in _flush
-    transaction.rollback(_capture_exception=True)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/util/langhelpers.py", line 68, in __exit__
-    compat.reraise(exc_type, exc_value, exc_tb)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 153, in reraise
-    raise value
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/session.py", line 2568, in _flush
-    flush_context.execute()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/unitofwork.py", line 422, in execute
-    rec.execute(self)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/unitofwork.py", line 586, in execute
-    persistence.save_obj(
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/persistence.py", line 230, in save_obj
-    _emit_update_statements(
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/persistence.py", line 995, in _emit_update_statements
-    c = cached_connections[connection].execute(
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 982, in execute
-    return meth(self, multiparams, params)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 287, in _execute_on_connection
-    return connection._execute_clauseelement(self, multiparams, params)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1095, in _execute_clauseelement
-    ret = self._execute_context(
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1249, in _execute_context
-    self._handle_dbapi_exception(
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1476, in _handle_dbapi_exception
-    util.raise_from_cause(sqlalchemy_exception, exc_info)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 398, in raise_from_cause
-    reraise(type(exception), exception, tb=exc_tb, cause=cause)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 152, in reraise
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/routes.py", line 153, in index
+    return render_template('index.html', title='Home', posts=posts.items, commit_form=commit_form, comment_form=comment_form, next_url=next_url, prev_url=prev_url,
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
+    return _render(
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
     raise value.with_traceback(tb)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1245, in _execute_context
-    self.dialect.do_execute(
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 581, in do_execute
-    cursor.execute(statement, parameters)
-sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) database is locked
-[SQL: UPDATE user SET last_seen=? WHERE user.id = ?]
-[parameters: ('2020-02-20 17:43:21.330374', 1)]
-(Background on this error at: http://sqlalche.me/e/e3q8)
-2020-02-20 09:43:42,301 ERROR: Exception on /sync [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/base.html", line 77, in template
+    {% endblock %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endblock'. You probably made a nesting mistake. Jinja is expecting this tag, but currently looking for 'elif' or 'else' or 'endif'. The innermost block that needs to be closed is 'if'.
+2020-03-13 14:59:03,856 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-13 15:03:59,545 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-13 15:22:40,798 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-13 15:28:06,834 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-13 15:30:42,188 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-13 15:35:51,253 ERROR: Exception on /index [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
 Traceback (most recent call last):
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    return self.finalize_request(rv)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1967, in finalize_request
-    response = self.make_response(rv)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2096, in make_response
-    raise TypeError(
-TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
-2020-02-20 12:14:45,679 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-20 12:20:13,827 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
+    reraise(exc_type, exc_value, tb)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
+    return self.view_functions[rule.endpoint](**req.view_args)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
+    return func(*args, **kwargs)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/routes.py", line 153, in index
+    return render_template('index.html', title='Home', posts=posts.items, commit_form=commit_form, comment_form=comment_form, next_url=next_url, prev_url=prev_url,
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
+    return _render(
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/index.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/base.html", line 54, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.

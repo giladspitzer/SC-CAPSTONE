@@ -1,4 +1,56 @@
-2020-02-20 12:20:16,127 ERROR: Exception on /edit_profile [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
+2020-03-13 15:35:54,430 ERROR: Exception on /favicon.ico [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
+Traceback (most recent call last):
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1925, in dispatch_request
+    self.raise_routing_exception(req)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1907, in raise_routing_exception
+    raise request.routing_exception
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/ctx.py", line 350, in match_request
+    result = self.url_adapter.match(return_rule=True)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/werkzeug/routing.py", line 1945, in match
+    raise NotFound()
+werkzeug.exceptions.NotFound: 404 Not Found: The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1815, in handle_user_exception
+    return self.handle_http_exception(e)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1743, in handle_http_exception
+    return handler(e)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/errors.py", line 7, in not_found_error
+    return render_template('404.html'), 404
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
+    return _render(
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
+    rv = template.render(context)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/environment.py", line 1090, in render
+    self.environment.handle_exception()
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/404.html", line 1, in top-level template code
+    {% extends "base.html" %}
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/environment.py", line 832, in handle_exception
+    reraise(*rewrite_traceback_stack(source=source))
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/base.html", line 54, in template
+    {% endif %}
+jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'endif'. Jinja was looking for the following tags: 'endblock'. The innermost block that needs to be closed is 'block'.
+2020-03-13 15:36:22,946 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-13 16:01:09,526 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-13 16:01:49,349 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-14 20:12:08,056 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-14 20:12:19,073 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-14 20:22:14,821 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-14 20:28:20,527 ERROR: Exception on /sync [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
 Traceback (most recent call last):
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -12,10 +64,10 @@ Traceback (most recent call last):
     rv = self.dispatch_request()
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
     return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_login/utils.py", line 261, in decorated_view
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/routes.py", line 218, in edit_profile
-    return render_template('edit_profile.html', title='Edit Profile', form=form)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/routes.py", line 326, in sync
+    return render_template('sync.html', title='Syncing with Schoology')
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/templating.py", line 137, in render_template
     return _render(
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/templating.py", line 120, in _render
@@ -26,7 +78,7 @@ Traceback (most recent call last):
     reraise(*rewrite_traceback_stack(source=source))
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/_compat.py", line 28, in reraise
     raise value.with_traceback(tb)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/edit_profile.html", line 1, in top-level template code
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/sync.html", line 1, in top-level template code
     {% extends "base.html" %}
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/base.html", line 1, in top-level template code
     {% extends 'bootstrap/base.html' %}
@@ -38,34 +90,8 @@ Traceback (most recent call last):
     {%- endblock metas %}
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_bootstrap/templates/bootstrap/base.html", line 13, in block "body"
     {%- block styles %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/base.html", line 65, in block "content"
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/base.html", line 101, in block "content"
     {% block app_content %}{% endblock %}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/edit_profile.html", line 8, in block "app_content"
-    {{ wtf.form_field(form.username) }}
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/jinja2/environment.py", line 471, in getattr
-    return getattr(obj, attribute)
-jinja2.exceptions.UndefinedError: 'wtf' is undefined
-2020-02-20 12:20:38,041 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-20 12:21:03,866 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-20 12:21:49,715 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-20 12:22:13,835 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-20 12:23:19,419 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-20 12:23:45,463 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-20 12:25:00,336 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-20 12:25:29,935 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-20 12:26:37,576 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-20 12:27:02,796 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-20 12:28:14,363 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-24 09:55:47,843 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-24 09:59:26,797 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-24 10:00:02,695 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-24 10:00:34,047 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-24 10:01:20,554 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-24 10:07:16,195 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-24 10:10:03,617 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-24 10:11:10,538 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-24 10:16:34,889 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-24 10:18:56,534 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-24 10:19:27,240 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-24 10:20:05,242 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-02-24 10:21:43,140 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/templates/sync.html", line 7, in block "app_content"
+    <button class="btn btn-primary btn-block" onclick="{{ retrieve_data(current_user) }}"></button>
+jinja2.exceptions.UndefinedError: 'retrieve_data' is undefined

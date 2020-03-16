@@ -72,9 +72,9 @@ def url_for_self(**args):
 
 def time(inputed):
     if inputed.date() == datetime.today().date():
-        return 'Today at ' + str(inputed.strftime("%H:%M:%S"))
+        return 'Today at ' + str(inputed.strftime("%H:%M"))
     else:
-        return str(inputed.strftime("%d/%m/%Y at %H:%M"))
+        return str(inputed.strftime("%a, %b %d, %Y @ %H:%M"))
 
 def convert_time(minutes):
     hours = minutes // 60
@@ -94,12 +94,37 @@ def colorify(commit):
         return '#F90E2D'
 
 
+def sort_assignments(assignments, type):
+    if type == 'assignments_time_desc':
+        assignments_time_desc = sorted(assignments, key=lambda r: r[1])
+        assignments_time_desc = [x[0] for x in assignments_time_desc]
+        return assignments_time_desc
+    elif type == 'assignments_time_asc':
+        assignments_time_asc = sorted(assignments, key=lambda r: r[1], reverse=True)
+        assignments_time_asc = [x[0] for x in assignments_time_asc]
+        return assignments_time_asc
+    elif type == 'assignments_latest_commited':
+        assignments_latest_commited = sorted(assignments, key=lambda r: r[2], reverse=True)
+        assignments_latest_commited = [x[0] for x in assignments_latest_commited]
+        return assignments_latest_commited
+
+
+def retrieve_data(current_user):
+    current_user.update_sections()
+    current_user.update_assignments()
+    current_user.update_events()
+    current_user.set_avatar()
+    current_user.update_grades()
+
+
 app.jinja_env.globals['url_for_self'] = url_for_self
 app.jinja_env.globals['time'] = time
 app.jinja_env.globals['convert_time'] = convert_time
+app.jinja_env.globals['sort_assignments'] = sort_assignments
 app.static_folder = 'static'
 app.jinja_env.globals['now'] = datetime.utcnow
 app.jinja_env.globals['colorify'] = colorify
+app.jinja_env.globals['retrieve_data'] = retrieve_data
 app.config['UPLOADS'] = '/Users/giladspitzer1/Desktop/SENIOR/FLASK/CAPSTONE/app/static/uploads'
 app.jinja_env.auto_reload = True
 app.config['TEMPLATES_AUTO_RELOAD'] = True

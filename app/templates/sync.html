@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <h1>Manually syncing your data with Schoology</h1>
+    <p style="font-size: 16px">Your user image, courses, assignments, grades, and events are retrieved from your Schoology account
+        using the API credentials that you provided upon registering. <b>This may take up to 5 minutes. Please do not navigate away from this page</b></p>
+    <a id="sync" class="self-btn" href="/retrieve_data" onclick="if(this.innerHTML =='Sync'){this.innerHTML = '<h5>Syncing...</h5>'}">Sync</a>
+
+{% endblock %}
+
+<script>
+    function change(){
+    document.getElementById("sync").value="Syncing...";
+}
+</script>
