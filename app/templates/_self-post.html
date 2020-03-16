@@ -1,4 +1,72 @@
 <div class="d-flex justify-content-end mb-4">
+    <div class="likes">
+        {% if post.is_liked(current_user) %}
+            {% if post.likes|length > 0 %}
+                <button type="button"
+                                   id="popover-test"
+                                   class="btn btn-sm btn-link"
+                                   data-toggle="popover"
+                                   data-html="true"
+                                    style="padding-right:0px"
+                                   data-content="<table class='table table-striped' style='max-height:300px; overflow:auto'>
+                                                    {% for user in post.likes %}
+                                                        <tr onclick='window.location='/user/{{ user.username }}''>
+                                                        <td width='20%'><img class='img_small' src='{{ user.picture_url }}'></td>
+                                                        <td width='80%' style='text-align: center'><a href='{{ url_for('user', username=user.username) }}'><h4>{{ user.username }}</h4></a></td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </table>"
+                                   data-placement="right">
+                                <span style="font-size: 16px; color: black">{{post.likes|length}}</span>
+                           </button>
+                <script>$("[data-toggle=popover]").popover();</script>
+                <script>
+                    $('html').on('mouseup', function(e) {
+                        if(!$(e.target).closest('.popover').length) {
+                            $('.popover').each(function(){
+                                $(this.previousSibling).popover('hide');
+                            });
+                        }
+                    });
+                </script>
+            {% endif %}
+            <a href="{{url_for('unlike', type='post', id=post.id) }}"><img src="https://img.icons8.com/metro/26/000000/thumbs-down.png" style="height: 25px;width: 25px; margin-top: 10%"></a>
+        {% else %}
+            {% if post.likes|length > 0 %}
+                <button type="button"
+                                   id="popover-test"
+                                   class="btn btn-sm btn-link"
+                                   data-toggle="popover"
+                                   data-html="true"
+                                    style="padding-right:0px"
+                                   data-content="<table class='table table-striped' style='max-height:300px; overflow:auto'>
+                                                    {% for user in post.likes %}
+                                                        <tr onclick='window.location='/user/{{ user.username }}''>
+                                                        <td width='20%'><img class='img_small' src='{{ user.picture_url }}'></td>
+                                                        <td width='80%' style='text-align: center'><a href='{{ url_for('user', username=user.username) }}'><h4>{{ user.username }}</h4></a></td>
+                                                        </tr>
+                                                    {% endfor %}
+                                                </table>"
+                                   data-placement="right">
+                                <span style="font-size: 16px; color: black">{{post.likes|length}}</span>
+                           </button>
+                <script>$("[data-toggle=popover]").popover();</script>
+                <script>
+                    $('html').on('mouseup', function(e) {
+                        if(!$(e.target).closest('.popover').length) {
+                            $('.popover').each(function(){
+                                $(this.previousSibling).popover('hide');
+                            });
+                        }
+                    });
+                </script>
+                {% set margin = '10%' %}
+            {% else %}
+                {% set margin = '30%' %}
+            {% endif %}
+            <a href="{{url_for('like', type='post', id=post.id) }}"><img src="https://img.icons8.com/pastel-glyph/64/000000/facebook-like.png" style="height: 25px;width: 25px; margin-top: {{ margin }}"></a>
+        {% endif %}
+    </div>
     <div class="msg_cotainer_send">
         {{post.body}}
         <span class="msg_time_send">{{ time(post.timestamp) }}</span>
@@ -6,4 +74,13 @@
     <div class="img_cont_msg">
         <img src="{{ post.author.picture_url }}" class="img-circle user_img_msg">
     </div>
+    {% if post.author.username|length >=10 %}
+        {% set author = post.author.username[:7] + '...'%}
+    {% else %}
+        {% set author = post.author.username %}
+    {% endif %}
+    <span style="transform: rotate(45deg); color:#333; font-size: 13px">
+        <a href="{{ url_for('user', username=post.author.username) }}"> {{ author }}</a>
+        <div><a style="color: red" class="close" href="/delete_post/post/{{ post.id }}">&times;</a></div>
+    </span>
 </div>

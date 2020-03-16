@@ -1,67 +1,104 @@
 {% extends 'bootstrap/base.html' %}
-<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
+
+{% block styles %}
+    {{super()}}
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.css" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block scripts %}
+    {{super()}}
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote.min.js"></script>
+    <script>
+      $(".dropdown").click(changeClass);
+
+    function changeClass() {
+       $(".dropdown").toggleClass("open");
+    }
+    </script>
+    <script>
+      $("li.open").click(changeClass);
+
+    function changeClass() {
+       $("li.open").toggleClass("dropdown");
+    }
+    </script>
+
+{% endblock %}
 
 {% block title %}
-    {% if title %}{{ title }} - Schoology Connect{% else %}Welcome to Schoology Connect{% endif %}
+    {% if title %}{{ title }} | Schoology Connect{% else %}Welcome to Schoology Connect{% endif %}
 {% endblock %}
-        {% block navbar %}
-            <nav class="navbar navbar-default">
-                <div class="container-fluid">
-                    <div class="navbar-header navbar-brand">
-                        Schoology Linked
-                    </div>
-                {% if not current_user.is_anonymous %}
+
+{% block navbar %}
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/index">Schoology Linked</a>
+            </div>
+            {% if not current_user.is_anonymous %}
                 <ul class="nav navbar-nav">
-                      <li>
-                        <a href="{{ url_for('index') }}">Home</a>
-                      </li>
-                      <li>
-                        <a href="{{ url_for('assignments') }}">Assignments</a>
-                      </li>
-                      <li>
-                        <a href="{{ url_for('sections') }}">Sections</a>
-                      </li>
-                      <li class="dropdown" style="float: right">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <span class="caret"></span> {{ current_user.username }}</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="/user/{{ current_user.username }}">Profile</a></li>
-                                <li><a class="dropdown-item" href="/logout">Logout</a></li>
-                            </ul>
-                      </li>
-                    </ul>
+                    {% if 'index' in request.path %}
+                        <li class="active"><a href="{{ url_for('index') }}">Home</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('index') }}">Home</a></li>
                     {% endif %}
-                </div>
 
-            </nav>
-
-{#            #}
-{#            <nav class="navbar navbar-default">#}
-{#               <b>Schoology Linked:</b>#}
-{#              <a href="{{ url_for('index') }}">Home</a>#}
-{#              {% if current_user.is_anonymous %}#}
-{#              <a href="{{ url_for('login') }}" style="float: right">Login</a>#}
-{#              {% else %}#}
-{#              <a href="{{ url_for('events') }}">Events</a>#}
-{#              <a href="{{ url_for('assignments') }}">Assignments</a>#}
-{#               <a href="{{ url_for('logout') }}" style="float: right">Logout </a>#}
-{#               <a href="{{ url_for('explore') }}">Explore</a>#}
-{#              <a href="{{ url_for('sections') }}">Sections</a>#}
-{#              <a href="{{ url_for('user', username=current_user.username) }}" style="float: right">Profile</a>#}
-{#              {% endif %}#}
-{#            </nav>#}
-        {% endblock %}
-
-        {% block content %}
-            <div class="container">
-                {% with messages = get_flashed_messages() %}
-                    {% if messages %}
-                        {% for message in messages %}
-                            <div class="alert alert-info" role="alert">{{ message }}</div>
-                        {% endfor %}
+                    {% if 'assignments' in request.path %}
+                        <li class="active"><a href="{{ url_for('assignments') }}">Assignments</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('assignments') }}">Assignments</a></li>
                     {% endif %}
-                {% endwith %}
 
-        {% block app_content %}{% endblock %}
+                    {% if 'sections' in request.path %}
+                        <li class="active"><a href="{{ url_for('sections') }}">Sections</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('sections') }}">Sections</a></li>
+                    {% endif %}
+
+                    {% if 'events' in request.path %}
+                        <li class="active"><a href="{{ url_for('events') }}">Calendar</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('events') }}">Calendar</a></li>
+                    {% endif %}
+                </ul>
+            {% endif %}
+            <ul class="nav navbar-nav navbar-right">
+                {% if not current_user.is_anonymous %}
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="padding-top: 10px; padding-bottom: 10px">
+                        <img src="{{ current_user.picture_url }}" class="img-circle user_img_msg" style="height: 30px; width: 30px; margin-right: 10px">
+                        {{ current_user.username }} <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a href="{{ url_for('user', username=current_user.username) }}"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+                          <li><a href="{{ url_for('sync') }}"><img style="height: 17px; width: 17px" src="https://www.materialui.co/materialIcons/notification/sync_black_2048x2048.png"> Sync</a></li>
+                          <li><a href="/logout"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+                        </ul>
+                    </li>
+                {% else %}
+                    <li class="{{ class }}"><a href="{{ url_for('register') }}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li class="{{ class }}"><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-info" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+    {% block app_content %}{% endblock %}
     </div>
 {% endblock %}
+

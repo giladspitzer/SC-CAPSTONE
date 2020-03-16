@@ -1,5 +1,4 @@
 <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 {% extends "base.html" %}
 
 {% block app_content %}
@@ -63,14 +62,12 @@
                 DUE: {{ assignment.due }}
             </div>
         {% if assignment.sc_comments.count() > 1 %}
-            <h5>Schoology Comments:</h5>
+            <h5>Schoology Comments ({{ assignment.sc_comments.count() }}):</h5>
             <div class="schoology_comments" style="border: 5px">
                 <table class="table table-hover table-striped" style="padding-top: 10px">
-                    <td>
                         {% for comment in assignment.sc_comments %}
                             <tr>{% include '_sc-comment.html' %}</tr>
                         {% endfor %}
-                    </td>
                 </table>
              </div>
         {% endif %}
@@ -139,7 +136,7 @@
                         </div>
                     </div>
                     <div id="post_commit" class="tab-pane fade">
-                        {% include '_commit_form.html' %}
+                        {% include '_commit_form_sidebar.html' %}
                      </div>
                     <div id="commit_history_timestamp_desc" class="tab-pane fade">
                         <table class="table table-hover">
@@ -188,14 +185,47 @@
             </td>
         {% endif %}
     </tr>
-     <tr>
-         <td class="chat_box" colspan="2">
-             {% include '_assignment-chat.html' %}
-         </td>
-         <td>
-             <h3> Personal Notes</h3>
-         </td>
-     </tr>
+    {% if assignment in current_user.assignments %}
+    {% if assignment.title != 'Sample Assignment' %}
+         <tr>
+             <td class="chat_box" colspan="2">
+                 {% include '_assignment-chat.html' %}
+             </td>
+             <td colspan="1">
+                 <form method="POST" action="/assignment_comment/{{current_user.id}}/{{assignment.id}}">
+                     {% if current_user.notes.filter_by(assignment_id=assignment.id).count() > 0 %}
+                        <textarea id="summernote" name="notes">
+                            {{ current_user.notes.filter_by(assignment_id=assignment.id).first().body }}
+                        </textarea>
+                     {% else %}
+                        <textarea id="summernote" name="notes"></textarea>
+                     {% endif %}
+                    <input type="submit" value="Save Note" class="btn btn-default btn-block" style="max-width: 310px">
+                 </form>
+                 <script>
+                    $(document).ready(function() {
+                        $('#summernote').summernote(
+                            {
+                                placeholder: 'Personal Assignment Notes',
+                                shortcuts: false,
+                                tabsize: 2,
+                                height: 360,
+                                width: 310,
+                                margin: 0,
+                                toolbar: [
+                                  ['font', ['bold', 'underline', 'italic']],
+                                  ['insert', ['link', 'picture', 'video']],
+                                  ['view', ['fullscreen']],
+                                  ['para', ['ul', 'ol']]
+                                 ]
+                            }
+                        );
+                    });
+                  </script>
+             </td>
+         </tr>
+    {% endif %}
+    {% endif %}
 </table>
 
 {% endblock %}

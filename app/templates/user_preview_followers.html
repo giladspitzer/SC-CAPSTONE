@@ -1,0 +1,11 @@
+<td width="10%"><img class="img_small" src="{{ user.picture_url }}" ></td>
+<td width="80%" style="text-align: center"><a href="{{ url_for('user', username=user.username) }}"><h4>{{ user.username }}</h4></a></td>
+<td with="10%" style="text-align: center; padding-top: 18px">
+        {% if current_user.username in request.path %}
+            <a style="color: red" class="close" href="{{ url_for('delete_follower', username=user.username) }}"> &times; </a>
+        {% endif %}
+</td>
+
+
+
+{#FIX TOOLTIP AND ADD LINK TO REMOVE FOLLOWER FOR X#}

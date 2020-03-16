@@ -14,11 +14,14 @@
                     <h4 style="padding-left: 25px; color: #3A7734">NO UPCOMING ASSIGNMENTS!</h4>
                 {% endif %}
             </td>
-            {% if section.get_section_grade(current_user) != 'None' %}
-            <td align="right">
-                <h3>Grade: {{section.get_section_grade(current_user)}}</h3>
+            <td align="center">
+                {% if section.get_section_grade(current_user) != 'None' %}
+                    <h3>Grade: {{section.get_section_grade(current_user)}}</h3>
+                {% else %}
+                    <h4 style="color: #5e5e5e">No Grade Found</h4>
+                {% endif %}
             </td>
-            {% endif %}}
+
         </tr>
     {% endfor %}
     </table>

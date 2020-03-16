@@ -2,7 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65d81804-e266-4908-9191-88e359fdd95e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/_commit_form_sidebar.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/sync.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/user_likes_preview.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/user_preview_followers.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/user_preview_following.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app.db" beforeDir="false" afterPath="$PROJECT_DIR$/app.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schoologyapi/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schoologyapi/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/chat.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/chat.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/_assignment-chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_assignment-chat.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/_assignment.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_assignment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/_comment.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_comment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/_comment_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_comment_modal.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/_commit.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_commit.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/_commit_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_commit_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/_self-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_self-post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/_trending.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_trending.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/_upcoming_assignment.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_upcoming_assignment.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/edit_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/sections.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/sections.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/tester.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/configurator.py" beforeDir="false" afterPath="$PROJECT_DIR$/configurator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/schoologylinked.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/schoologylinked.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/schoologylinked.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/logs/schoologylinked.log.1" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/schoologylinked.log.10" beforeDir="false" afterPath="$PROJECT_DIR$/logs/schoologylinked.log.10" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/schoologylinked.log.2" beforeDir="false" afterPath="$PROJECT_DIR$/logs/schoologylinked.log.2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/schoologylinked.log.3" beforeDir="false" afterPath="$PROJECT_DIR$/logs/schoologylinked.log.3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/schoologylinked.log.4" beforeDir="false" afterPath="$PROJECT_DIR$/logs/schoologylinked.log.4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/schoologylinked.log.5" beforeDir="false" afterPath="$PROJECT_DIR$/logs/schoologylinked.log.5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/schoologylinked.log.6" beforeDir="false" afterPath="$PROJECT_DIR$/logs/schoologylinked.log.6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/schoologylinked.log.7" beforeDir="false" afterPath="$PROJECT_DIR$/logs/schoologylinked.log.7" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/schoologylinked.log.8" beforeDir="false" afterPath="$PROJECT_DIR$/logs/schoologylinked.log.8" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logs/schoologylinked.log.9" beforeDir="false" afterPath="$PROJECT_DIR$/logs/schoologylinked.log.9" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +63,12 @@
     <option name="HIDDEN_KINDS">
       <set />
     </option>
-    <expand />
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="app.db [2]" type="feb32156:DbDataSourceImpl" />
+      </path>
+    </expand>
     <select />
   </component>
   <component name="ExportToHTMLSettings">
@@ -30,6 +78,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -46,6 +95,7 @@
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -54,17 +104,19 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/venv/lib/python3.8/site-packages" />
-      <recent name="$PROJECT_DIR$/venv/bin" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/venv/lib/python3.8/site-packages" />
       <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/templates/auth" />
+      <recent name="$PROJECT_DIR$/app/auth" />
+      <recent name="$PROJECT_DIR$/app/templates/errors" />
+      <recent name="$PROJECT_DIR$/app" />
+      <recent name="$PROJECT_DIR$/venv/lib/python3.8/site-packages" />
     </key>
   </component>
   <component name="RunManager" selected="Flask server.CAPSTONE">
@@ -90,6 +142,28 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="tester" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CAPSTONE" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app/tester.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="CAPSTONE" type="Python.FlaskServer">
       <module name="CAPSTONE" />
       <option name="target" value="$PROJECT_DIR$/app/__init__.py" />
@@ -97,7 +171,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -108,7 +182,13 @@
     <list>
       <item itemvalue="Flask server.CAPSTONE" />
       <item itemvalue="Python.CAPSTONE" />
+      <item itemvalue="Python.tester" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.tester" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -139,7 +219,16 @@
       <workItem from="1582735533488" duration="577000" />
       <workItem from="1582775417337" duration="791000" />
       <workItem from="1582776693158" duration="1585000" />
-      <workItem from="1582778911288" duration="225000" />
+      <workItem from="1582778911288" duration="268000" />
+      <workItem from="1582826059994" duration="113000" />
+      <workItem from="1582849195445" duration="1429000" />
+      <workItem from="1583259870255" duration="14003000" />
+      <workItem from="1583437981150" duration="44000" />
+      <workItem from="1583456789566" duration="20644000" />
+      <workItem from="1583777139785" duration="1903000" />
+      <workItem from="1583816741801" duration="10814000" />
+      <workItem from="1583948720320" duration="24247000" />
+      <workItem from="1584379268879" duration="892000" />
     </task>
     <servers />
   </component>
@@ -151,92 +240,114 @@
       <screen x="1440" y="23" width="1920" height="1057" />
     </state>
     <state x="1932" y="171" key="#Notifications/0.23.1440.822/1440.23.1920.1057@1440.23.1920.1057" timestamp="1582776754910" />
-    <state x="184" y="93" width="1071" height="696" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582778929456">
+    <state x="184" y="93" width="1071" height="696" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583428978195">
       <screen x="0" y="23" width="1440" height="822" />
     </state>
     <state x="184" y="93" width="1071" height="696" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.816@0.23.1440.816" timestamp="1581484212909" />
     <state x="184" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.821/1440.23.1920.1057@0.23.1440.821" timestamp="1582069302153" />
     <state x="184" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1582778929456" />
     <state x="1685" y="113" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.822/1440.23.1920.1057@1440.23.1920.1057" timestamp="1582776807028" />
-    <state x="184" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.822@0.23.1440.822" timestamp="1582735087278" />
+    <state x="184" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.822@0.23.1440.822" timestamp="1583428978195" />
+    <state x="436" y="234" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583260496961">
+      <screen x="0" y="23" width="1440" height="822" />
+    </state>
+    <state x="436" y="234" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.822@0.23.1440.822" timestamp="1583260496961" />
     <state x="476" y="165" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582603044852">
       <screen x="0" y="23" width="1440" height="822" />
     </state>
     <state x="476" y="165" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1582603044852" />
+    <state x="308" y="23" key="CommitChangelistDialog2" timestamp="1583866272428">
+      <screen x="0" y="23" width="1440" height="822" />
+    </state>
+    <state x="308" y="23" key="CommitChangelistDialog2/0.23.1440.822@0.23.1440.822" timestamp="1583866272428" />
     <state x="507" y="192" key="FileChooserDialogImpl" timestamp="1582656427839">
       <screen x="0" y="23" width="1440" height="822" />
     </state>
     <state x="507" y="192" key="FileChooserDialogImpl/0.23.1440.822@0.23.1440.822" timestamp="1582656427839" />
-    <state width="1361" height="171" key="GridCell.Tab.0.bottom" timestamp="1582778937123">
-      <screen x="0" y="23" width="1440" height="822" />
+    <state width="1707" height="362" key="GridCell.Tab.0.bottom" timestamp="1584380194619">
+      <screen x="1440" y="23" width="1920" height="1057" />
     </state>
     <state width="1361" height="197" key="GridCell.Tab.0.bottom/0.23.1440.816@0.23.1440.816" timestamp="1581558765093" />
     <state width="1361" height="178" key="GridCell.Tab.0.bottom/0.23.1440.821/1440.23.1920.1057@0.23.1440.821" timestamp="1582071210329" />
     <state width="1361" height="178" key="GridCell.Tab.0.bottom/0.23.1440.821@0.23.1440.821" timestamp="1582002489364" />
-    <state width="1361" height="171" key="GridCell.Tab.0.bottom/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1582778937123" />
+    <state width="1357" height="270" key="GridCell.Tab.0.bottom/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1584056389995" />
     <state width="1361" height="171" key="GridCell.Tab.0.bottom/0.23.1440.822/1440.23.1920.1057@1440.23.1920.1057" timestamp="1582775984535" />
-    <state width="1361" height="171" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1582735232786" />
-    <state width="1361" height="359" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1582582560055" />
-    <state width="1361" height="171" key="GridCell.Tab.0.center" timestamp="1582778937122">
-      <screen x="0" y="23" width="1440" height="822" />
+    <state width="1357" height="237" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1584334155333" />
+    <state width="1707" height="362" key="GridCell.Tab.0.bottom/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584380194619" />
+    <state width="1357" height="362" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1584342135310" />
+    <state width="1357" height="362" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1584336646345" />
+    <state width="1707" height="362" key="GridCell.Tab.0.center" timestamp="1584380194618">
+      <screen x="1440" y="23" width="1920" height="1057" />
     </state>
     <state width="1361" height="197" key="GridCell.Tab.0.center/0.23.1440.816@0.23.1440.816" timestamp="1581558765093" />
     <state width="1361" height="178" key="GridCell.Tab.0.center/0.23.1440.821/1440.23.1920.1057@0.23.1440.821" timestamp="1582071210328" />
     <state width="1361" height="178" key="GridCell.Tab.0.center/0.23.1440.821@0.23.1440.821" timestamp="1582002489363" />
-    <state width="1361" height="171" key="GridCell.Tab.0.center/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1582778937122" />
+    <state width="1357" height="270" key="GridCell.Tab.0.center/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1584056389994" />
     <state width="1361" height="171" key="GridCell.Tab.0.center/0.23.1440.822/1440.23.1920.1057@1440.23.1920.1057" timestamp="1582775984534" />
-    <state width="1361" height="171" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1582735232786" />
-    <state width="1361" height="359" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1582582560054" />
-    <state width="1361" height="171" key="GridCell.Tab.0.left" timestamp="1582778937122">
-      <screen x="0" y="23" width="1440" height="822" />
+    <state width="1357" height="237" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1584334155332" />
+    <state width="1707" height="362" key="GridCell.Tab.0.center/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584380194618" />
+    <state width="1357" height="362" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1584342135310" />
+    <state width="1357" height="362" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1584336646344" />
+    <state width="1707" height="362" key="GridCell.Tab.0.left" timestamp="1584380194617">
+      <screen x="1440" y="23" width="1920" height="1057" />
     </state>
     <state width="1361" height="197" key="GridCell.Tab.0.left/0.23.1440.816@0.23.1440.816" timestamp="1581558765092" />
     <state width="1361" height="178" key="GridCell.Tab.0.left/0.23.1440.821/1440.23.1920.1057@0.23.1440.821" timestamp="1582071210328" />
     <state width="1361" height="178" key="GridCell.Tab.0.left/0.23.1440.821@0.23.1440.821" timestamp="1582002489362" />
-    <state width="1361" height="171" key="GridCell.Tab.0.left/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1582778937122" />
+    <state width="1357" height="270" key="GridCell.Tab.0.left/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1584056389993" />
     <state width="1361" height="171" key="GridCell.Tab.0.left/0.23.1440.822/1440.23.1920.1057@1440.23.1920.1057" timestamp="1582775984534" />
-    <state width="1361" height="171" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1582735232786" />
-    <state width="1361" height="359" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1582582560054" />
-    <state width="1361" height="171" key="GridCell.Tab.0.right" timestamp="1582778937123">
-      <screen x="0" y="23" width="1440" height="822" />
+    <state width="1357" height="237" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1584334155331" />
+    <state width="1707" height="362" key="GridCell.Tab.0.left/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584380194617" />
+    <state width="1357" height="362" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1584342135309" />
+    <state width="1357" height="362" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1584336646344" />
+    <state width="1707" height="362" key="GridCell.Tab.0.right" timestamp="1584380194618">
+      <screen x="1440" y="23" width="1920" height="1057" />
     </state>
     <state width="1361" height="197" key="GridCell.Tab.0.right/0.23.1440.816@0.23.1440.816" timestamp="1581558765093" />
     <state width="1361" height="178" key="GridCell.Tab.0.right/0.23.1440.821/1440.23.1920.1057@0.23.1440.821" timestamp="1582071210329" />
     <state width="1361" height="178" key="GridCell.Tab.0.right/0.23.1440.821@0.23.1440.821" timestamp="1582002489363" />
-    <state width="1361" height="171" key="GridCell.Tab.0.right/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1582778937123" />
+    <state width="1357" height="270" key="GridCell.Tab.0.right/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1584056389994" />
     <state width="1361" height="171" key="GridCell.Tab.0.right/0.23.1440.822/1440.23.1920.1057@1440.23.1920.1057" timestamp="1582775984535" />
-    <state width="1361" height="171" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1582735232786" />
-    <state width="1361" height="359" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1582582560055" />
-    <state width="239" height="539" key="HiddenNamespacesPopup" timestamp="1582775980732">
-      <screen x="1440" y="23" width="1920" height="1057" />
+    <state width="1357" height="237" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1584334155332" />
+    <state width="1707" height="362" key="GridCell.Tab.0.right/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584380194618" />
+    <state width="1357" height="362" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1584342135310" />
+    <state width="1357" height="362" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1584336646345" />
+    <state width="239" height="420" key="HiddenNamespacesPopup" timestamp="1583428986031">
+      <screen x="0" y="23" width="1440" height="822" />
     </state>
     <state width="239" height="539" key="HiddenNamespacesPopup/0.23.1440.822/1440.23.1920.1057@1440.23.1920.1057" timestamp="1582775980732" />
-    <state x="221" y="70" key="SettingsEditor" timestamp="1582734930368">
+    <state width="239" height="420" key="HiddenNamespacesPopup/0.23.1440.822@0.23.1440.822" timestamp="1583428986031" />
+    <state x="221" y="70" key="SettingsEditor" timestamp="1583816593621">
       <screen x="0" y="23" width="1440" height="822" />
     </state>
     <state x="221" y="70" key="SettingsEditor/0.23.1440.816@0.23.1440.816" timestamp="1581484174584" />
     <state x="221" y="70" key="SettingsEditor/0.23.1440.821/1440.23.1920.1057@0.23.1440.821" timestamp="1582070178010" />
-    <state x="221" y="70" key="SettingsEditor/0.23.1440.822@0.23.1440.822" timestamp="1582734930368" />
-    <state x="1969" y="333" key="com.intellij.ide.util.TipDialog" timestamp="1582776693294">
+    <state x="221" y="70" key="SettingsEditor/0.23.1440.822@0.23.1440.822" timestamp="1583816593621" />
+    <state x="1969" y="333" key="com.intellij.ide.util.TipDialog" timestamp="1584379269383">
       <screen x="1440" y="23" width="1920" height="1057" />
     </state>
     <state x="397" y="263" key="com.intellij.ide.util.TipDialog/0.23.1440.816@0.23.1440.816" timestamp="1581569686332" />
     <state x="397" y="264" key="com.intellij.ide.util.TipDialog/0.23.1440.821@0.23.1440.821" timestamp="1582002191017" />
     <state x="397" y="264" key="com.intellij.ide.util.TipDialog/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1582775418422" />
     <state x="1969" y="333" key="com.intellij.ide.util.TipDialog/0.23.1440.822/1440.23.1920.1057@1440.23.1920.1057" timestamp="1582776693294" />
-    <state x="397" y="264" key="com.intellij.ide.util.TipDialog/0.23.1440.822@0.23.1440.822" timestamp="1582734944494" />
+    <state x="397" y="264" key="com.intellij.ide.util.TipDialog/0.23.1440.822@0.23.1440.822" timestamp="1583948719805" />
+    <state x="1969" y="333" key="com.intellij.ide.util.TipDialog/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584379269383" />
     <state x="397" y="264" key="com.intellij.ide.util.TipDialog/0.23.1440.823@0.23.1440.823" timestamp="1582735533379" />
-    <state x="358" y="31" width="858" height="796" key="find.popup" timestamp="1582582533979">
-      <screen x="0" y="23" width="1440" height="823" />
+    <state x="323" y="49" width="858" height="796" key="find.popup" timestamp="1584242683658">
+      <screen x="0" y="23" width="1440" height="822" />
     </state>
+    <state x="323" y="49" width="858" height="796" key="find.popup/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1584055905901" />
+    <state x="323" y="49" width="858" height="796" key="find.popup/0.23.1440.822@0.23.1440.822" timestamp="1584242683658" />
     <state x="358" y="31" width="858" height="796" key="find.popup/0.23.1440.823@0.23.1440.823" timestamp="1582582533979" />
-    <state x="403" y="170" key="search.everywhere.popup" timestamp="1582582531045">
-      <screen x="0" y="23" width="1440" height="823" />
+    <state x="403" y="170" width="670" height="676" key="search.everywhere.popup" timestamp="1584140370699">
+      <screen x="0" y="23" width="1440" height="822" />
     </state>
+    <state x="403" y="170" width="670" height="676" key="search.everywhere.popup/0.23.1440.822@0.23.1440.822" timestamp="1584140370699" />
     <state x="403" y="170" key="search.everywhere.popup/0.23.1440.823@0.23.1440.823" timestamp="1582582531045" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/CAPSTONE$tester.coverage" NAME="tester Coverage Results" MODIFIED="1583260705592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/CAPSTONE$wait.coverage" NAME="wait Coverage Results" MODIFIED="1582775973186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/CAPSTONE$CAPSTONE.coverage" NAME="CAPSTONE Coverage Results" MODIFIED="1582778937115" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/CAPSTONE$CAPSTONE.coverage" NAME="CAPSTONE Coverage Results" MODIFIED="1584380194610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

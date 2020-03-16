@@ -34,7 +34,8 @@ class Schoology():
         """
         try:
             response = self.schoology_auth.oauth.get(url='%s%s?limit=%s&start=%s' % (self._ROOT, path, self.limit, self.start), headers=self.schoology_auth._request_header(), auth=self.schoology_auth.oauth.auth)
-            print(response)
+            if response.status_code != 200:
+                print(response)
             return response.json()
         except JSONDecodeError:
             return {}

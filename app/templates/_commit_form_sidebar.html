@@ -3,16 +3,14 @@
 <form method="POST" action="{{ url_for('create_post', option='commit', id=0) }}">
     <table class="table table-borderless">
         <tr>
-            <td style="width: 30%; padding-bottom: 0px">{{ wtf.form_field(commit_form.course) }}</td>
-            <td style="width: 30%; padding-bottom: 0px">{{ wtf.form_field(commit_form.assignment) }}</td>
-            <td style="width: 30%; padding-bottom: 0px">{{ wtf.form_field(commit_form.time_spent) }}</td>
+            <td style="padding-bottom: 0px">{{ wtf.form_field(commit_form.time_spent) }}</td>
         </tr>
 
         <tr>
-            <td colspan="3" style="padding-top: 0px" id="commit">{{ wtf.form_field(commit_form.post, style='resize:none', placeholder='Comment something...') }}</td>
+            <td style="padding-top: 0px">{{ wtf.form_field(commit_form.post, style='resize:none; height:200px;overflow:auto') }}</td>
         </tr>
         <tr>
-            <td colspan="3" style="padding-top: 0px">{{ wtf.form_field(commit_form.submit, class="btn btn-primary btn-block") }}</td>
+            <td style="padding-top: 0px">{{ wtf.form_field(commit_form.submit, class="btn btn-primary btn-block") }}</td>
         </tr>
     </table>
 
