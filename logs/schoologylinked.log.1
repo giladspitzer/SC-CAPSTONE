@@ -1,38 +1,13 @@
-2020-03-15 12:25:59,078 ERROR: Exception on /retrieve_data [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
+2020-03-16 11:25:31,560 ERROR: Exception on /index [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
 Traceback (most recent call last):
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    return self.finalize_request(rv)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1967, in finalize_request
-    response = self.make_response(rv)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2096, in make_response
-    raise TypeError(
-TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
-2020-03-15 12:35:29,015 ERROR: Exception on /retrieve_data [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
-Traceback (most recent call last):
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    return self.finalize_request(rv)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1967, in finalize_request
-    response = self.make_response(rv)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2096, in make_response
-    raise TypeError(
-TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
-2020-03-15 12:35:39,840 ERROR: Exception on /retrieve_data [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
-Traceback (most recent call last):
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1952, in full_dispatch_request
-    return self.finalize_request(rv)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1967, in finalize_request
-    response = self.make_response(rv)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2096, in make_response
-    raise TypeError(
-TypeError: The view function did not return a valid response. The function either returned None or ended without a return statement.
-2020-03-15 12:36:41,556 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
-2020-03-15 12:45:01,338 ERROR: Exception on /retrieve_data [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1245, in _execute_context
+    self.dialect.do_execute(
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: near "UNION": syntax error
+
+The above exception was the direct cause of the following exception:
+
 Traceback (most recent call last):
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
     response = self.full_dispatch_request()
@@ -48,58 +23,43 @@ Traceback (most recent call last):
     return self.view_functions[rule.endpoint](**req.view_args)
   File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
     return func(*args, **kwargs)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/routes.py", line 333, in retrieve_data
-    current_user.update_assignments()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/models.py", line 197, in update_assignments
-    comments = sc.get_assignment_comments([self.api_key, self.api_secret], s.id, a.id)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/apiclean.py", line 43, in get_assignment_comments
-    return authenticate(data[0], data[1]).get_assignment_comments(sectionid, assignmentid)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/schoologyapi/api.py", line 852, in get_assignment_comments
-    return [Assignment(raw) for raw in self._get('sections/%s/assignments/%s/comments' % (section_id, assignment_id))['comment']]
-KeyError: 'comment'
-2020-03-15 12:45:01,423 ERROR: Exception on /retrieve_data [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
-Traceback (most recent call last):
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/routes.py", line 333, in retrieve_data
-    current_user.update_assignments()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/models.py", line 201, in update_assignments
-    name = person.name_display
-AttributeError: 'User' object has no attribute 'name_display'
-2020-03-15 12:45:01,617 ERROR: Exception on /retrieve_data [GET] [in /Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py:1890]
-Traceback (most recent call last):
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 2446, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1951, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1820, in handle_user_exception
-    reraise(exc_type, exc_value, tb)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/_compat.py", line 39, in reraise
-    raise value
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1949, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask/app.py", line 1935, in dispatch_request
-    return self.view_functions[rule.endpoint](**req.view_args)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_login/utils.py", line 272, in decorated_view
-    return func(*args, **kwargs)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/routes.py", line 333, in retrieve_data
-    current_user.update_assignments()
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/models.py", line 197, in update_assignments
-    comments = sc.get_assignment_comments([self.api_key, self.api_secret], s.id, a.id)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/apiclean.py", line 43, in get_assignment_comments
-    return authenticate(data[0], data[1]).get_assignment_comments(sectionid, assignmentid)
-  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/schoologyapi/api.py", line 852, in get_assignment_comments
-    return [Assignment(raw) for raw in self._get('sections/%s/assignments/%s/comments' % (section_id, assignment_id))['comment']]
-KeyError: 'comment'
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/app/routes.py", line 152, in index
+    posts = current_user.followed_commits().paginate(
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/flask_sqlalchemy/__init__.py", line 496, in paginate
+    items = self.limit(per_page).offset((page - 1) * per_page).all()
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 3233, in all
+    return list(self)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 3389, in __iter__
+    return self._execute_and_instances(context)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/orm/query.py", line 3414, in _execute_and_instances
+    result = conn.execute(querycontext.statement, self._params)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 982, in execute
+    return meth(self, multiparams, params)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/sql/elements.py", line 293, in _execute_on_connection
+    return connection._execute_clauseelement(self, multiparams, params)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1095, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1249, in _execute_context
+    self._handle_dbapi_exception(
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1476, in _handle_dbapi_exception
+    util.raise_from_cause(sqlalchemy_exception, exc_info)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 398, in raise_from_cause
+    reraise(type(exception), exception, tb=exc_tb, cause=cause)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 152, in reraise
+    raise value.with_traceback(tb)
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1245, in _execute_context
+    self.dialect.do_execute(
+  File "/Users/giladspitzer/PycharmProjects/CAPSTONE/venv/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 588, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) near "UNION": syntax error
+[SQL: SELECT anon_1.commit_id AS anon_1_commit_id, anon_1.commit_user_id AS anon_1_commit_user_id, anon_1.commit_assignment_id AS anon_1_commit_assignment_id, anon_1.commit_schoology_id AS anon_1_commit_schoology_id, anon_1.commit_body AS anon_1_commit_body, anon_1.commit_time_spent AS anon_1_commit_time_spent, anon_1.commit_timestamp AS anon_1_commit_timestamp 
+FROM ((SELECT "commit".id AS commit_id, "commit".user_id AS commit_user_id, "commit".assignment_id AS commit_assignment_id, "commit".schoology_id AS commit_schoology_id, "commit".body AS commit_body, "commit".time_spent AS commit_time_spent, "commit".timestamp AS commit_timestamp 
+FROM "commit" JOIN followers ON followers.followed_id = "commit".user_id 
+WHERE followers.follower_id = ? ORDER BY "commit".timestamp DESC) UNION SELECT "commit".id AS commit_id, "commit".user_id AS commit_user_id, "commit".assignment_id AS commit_assignment_id, "commit".schoology_id AS commit_schoology_id, "commit".body AS commit_body, "commit".time_spent AS commit_time_spent, "commit".timestamp AS commit_timestamp 
+FROM "commit" 
+WHERE "commit".user_id = ?) AS anon_1
+ LIMIT ? OFFSET ?]
+[parameters: (1, 1, 10, 0)]
+(Background on this error at: http://sqlalche.me/e/e3q8)
+2020-03-16 11:25:39,440 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]
+2020-03-16 11:26:26,752 INFO: SchoologyLinked startup [in /Users/giladspitzer/PycharmProjects/CAPSTONE/app/__init__.py:58]

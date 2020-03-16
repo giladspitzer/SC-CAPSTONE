@@ -2,39 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="65d81804-e266-4908-9191-88e359fdd95e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/_commit_form_sidebar.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/sync.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/user_likes_preview.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/user_preview_followers.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/templates/user_preview_following.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/reset_password.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/reset_password_email.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/reset_password_email.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/templates/reset_password_request.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.db" beforeDir="false" afterPath="$PROJECT_DIR$/app.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/myemail.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/myemail.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/schoologyapi/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schoologyapi/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/chat.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/chat.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/_assignment-chat.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_assignment-chat.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/_assignment.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_assignment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/_comment.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_comment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/_comment_modal.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_comment_modal.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/_commit.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_commit.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/_commit_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_commit_form.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/_self-post.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_self-post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/_trending.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_trending.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/_upcoming_assignment.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_upcoming_assignment.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/edit_profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/edit_profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/_commit_form_sidebar.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/_commit_form_sidebar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/sections.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/sections.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/configurator.py" beforeDir="false" afterPath="$PROJECT_DIR$/configurator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/schoologylinked.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/schoologylinked.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/schoologylinked.log.1" beforeDir="false" afterPath="$PROJECT_DIR$/logs/schoologylinked.log.1" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logs/schoologylinked.log.10" beforeDir="false" afterPath="$PROJECT_DIR$/logs/schoologylinked.log.10" afterDir="false" />
@@ -77,8 +57,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -170,6 +150,13 @@
       <option name="targetType" value="PATH" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="MAIL_SERVER" value="smtp.googlemail.com" />
+        <env name="MAIL_PORT" value="587" />
+        <env name="MAIL_USE_TLS" value="1" />
+        <env name="MAIL_USERNAME" value="devgilad@gmail.com" />
+        <env name="MAIL_PASSWORD" value="FlaskSQL2020$$!" />
+      </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/venv/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
@@ -228,30 +215,35 @@
       <workItem from="1583777139785" duration="1903000" />
       <workItem from="1583816741801" duration="10814000" />
       <workItem from="1583948720320" duration="24247000" />
-      <workItem from="1584379268879" duration="892000" />
+      <workItem from="1584379268879" duration="5910000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="requirements.txt" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="1932" y="171" key="#Notifications" timestamp="1582776754910">
       <screen x="1440" y="23" width="1920" height="1057" />
     </state>
     <state x="1932" y="171" key="#Notifications/0.23.1440.822/1440.23.1920.1057@1440.23.1920.1057" timestamp="1582776754910" />
-    <state x="184" y="93" width="1071" height="696" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583428978195">
-      <screen x="0" y="23" width="1440" height="822" />
+    <state x="1685" y="113" width="1071" height="696" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584383434513">
+      <screen x="1440" y="23" width="1920" height="1057" />
     </state>
     <state x="184" y="93" width="1071" height="696" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.816@0.23.1440.816" timestamp="1581484212909" />
     <state x="184" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.821/1440.23.1920.1057@0.23.1440.821" timestamp="1582069302153" />
     <state x="184" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1582778929456" />
     <state x="1685" y="113" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.822/1440.23.1920.1057@1440.23.1920.1057" timestamp="1582776807028" />
     <state x="184" y="93" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.822@0.23.1440.822" timestamp="1583428978195" />
-    <state x="436" y="234" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583260496961">
-      <screen x="0" y="23" width="1440" height="822" />
+    <state x="1685" y="113" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584383434513" />
+    <state x="2021" y="294" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1584385210704">
+      <screen x="1440" y="23" width="1920" height="1057" />
     </state>
     <state x="436" y="234" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.822@0.23.1440.822" timestamp="1583260496961" />
+    <state x="2021" y="294" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584385210704" />
     <state x="476" y="165" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582603044852">
       <screen x="0" y="23" width="1440" height="822" />
     </state>
@@ -260,11 +252,15 @@
       <screen x="0" y="23" width="1440" height="822" />
     </state>
     <state x="308" y="23" key="CommitChangelistDialog2/0.23.1440.822@0.23.1440.822" timestamp="1583866272428" />
+    <state x="2154" y="318" key="EnvironmentVariablesDialog" timestamp="1584383337574">
+      <screen x="1440" y="23" width="1920" height="1057" />
+    </state>
+    <state x="2154" y="318" key="EnvironmentVariablesDialog/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584383337574" />
     <state x="507" y="192" key="FileChooserDialogImpl" timestamp="1582656427839">
       <screen x="0" y="23" width="1440" height="822" />
     </state>
     <state x="507" y="192" key="FileChooserDialogImpl/0.23.1440.822@0.23.1440.822" timestamp="1582656427839" />
-    <state width="1707" height="362" key="GridCell.Tab.0.bottom" timestamp="1584380194619">
+    <state width="1707" height="362" key="GridCell.Tab.0.bottom" timestamp="1584385630892">
       <screen x="1440" y="23" width="1920" height="1057" />
     </state>
     <state width="1361" height="197" key="GridCell.Tab.0.bottom/0.23.1440.816@0.23.1440.816" timestamp="1581558765093" />
@@ -273,10 +269,10 @@
     <state width="1357" height="270" key="GridCell.Tab.0.bottom/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1584056389995" />
     <state width="1361" height="171" key="GridCell.Tab.0.bottom/0.23.1440.822/1440.23.1920.1057@1440.23.1920.1057" timestamp="1582775984535" />
     <state width="1357" height="237" key="GridCell.Tab.0.bottom/0.23.1440.822@0.23.1440.822" timestamp="1584334155333" />
-    <state width="1707" height="362" key="GridCell.Tab.0.bottom/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584380194619" />
+    <state width="1707" height="362" key="GridCell.Tab.0.bottom/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584385630892" />
     <state width="1357" height="362" key="GridCell.Tab.0.bottom/0.23.1440.823@0.23.1440.823" timestamp="1584342135310" />
     <state width="1357" height="362" key="GridCell.Tab.0.bottom/0.23.1440.824@0.23.1440.824" timestamp="1584336646345" />
-    <state width="1707" height="362" key="GridCell.Tab.0.center" timestamp="1584380194618">
+    <state width="1707" height="362" key="GridCell.Tab.0.center" timestamp="1584385630891">
       <screen x="1440" y="23" width="1920" height="1057" />
     </state>
     <state width="1361" height="197" key="GridCell.Tab.0.center/0.23.1440.816@0.23.1440.816" timestamp="1581558765093" />
@@ -285,10 +281,10 @@
     <state width="1357" height="270" key="GridCell.Tab.0.center/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1584056389994" />
     <state width="1361" height="171" key="GridCell.Tab.0.center/0.23.1440.822/1440.23.1920.1057@1440.23.1920.1057" timestamp="1582775984534" />
     <state width="1357" height="237" key="GridCell.Tab.0.center/0.23.1440.822@0.23.1440.822" timestamp="1584334155332" />
-    <state width="1707" height="362" key="GridCell.Tab.0.center/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584380194618" />
+    <state width="1707" height="362" key="GridCell.Tab.0.center/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584385630891" />
     <state width="1357" height="362" key="GridCell.Tab.0.center/0.23.1440.823@0.23.1440.823" timestamp="1584342135310" />
     <state width="1357" height="362" key="GridCell.Tab.0.center/0.23.1440.824@0.23.1440.824" timestamp="1584336646344" />
-    <state width="1707" height="362" key="GridCell.Tab.0.left" timestamp="1584380194617">
+    <state width="1707" height="362" key="GridCell.Tab.0.left" timestamp="1584385630891">
       <screen x="1440" y="23" width="1920" height="1057" />
     </state>
     <state width="1361" height="197" key="GridCell.Tab.0.left/0.23.1440.816@0.23.1440.816" timestamp="1581558765092" />
@@ -297,10 +293,10 @@
     <state width="1357" height="270" key="GridCell.Tab.0.left/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1584056389993" />
     <state width="1361" height="171" key="GridCell.Tab.0.left/0.23.1440.822/1440.23.1920.1057@1440.23.1920.1057" timestamp="1582775984534" />
     <state width="1357" height="237" key="GridCell.Tab.0.left/0.23.1440.822@0.23.1440.822" timestamp="1584334155331" />
-    <state width="1707" height="362" key="GridCell.Tab.0.left/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584380194617" />
+    <state width="1707" height="362" key="GridCell.Tab.0.left/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584385630891" />
     <state width="1357" height="362" key="GridCell.Tab.0.left/0.23.1440.823@0.23.1440.823" timestamp="1584342135309" />
     <state width="1357" height="362" key="GridCell.Tab.0.left/0.23.1440.824@0.23.1440.824" timestamp="1584336646344" />
-    <state width="1707" height="362" key="GridCell.Tab.0.right" timestamp="1584380194618">
+    <state width="1707" height="362" key="GridCell.Tab.0.right" timestamp="1584385630891">
       <screen x="1440" y="23" width="1920" height="1057" />
     </state>
     <state width="1361" height="197" key="GridCell.Tab.0.right/0.23.1440.816@0.23.1440.816" timestamp="1581558765093" />
@@ -309,7 +305,7 @@
     <state width="1357" height="270" key="GridCell.Tab.0.right/0.23.1440.822/1440.23.1920.1057@0.23.1440.822" timestamp="1584056389994" />
     <state width="1361" height="171" key="GridCell.Tab.0.right/0.23.1440.822/1440.23.1920.1057@1440.23.1920.1057" timestamp="1582775984535" />
     <state width="1357" height="237" key="GridCell.Tab.0.right/0.23.1440.822@0.23.1440.822" timestamp="1584334155332" />
-    <state width="1707" height="362" key="GridCell.Tab.0.right/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584380194618" />
+    <state width="1707" height="362" key="GridCell.Tab.0.right/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584385630891" />
     <state width="1357" height="362" key="GridCell.Tab.0.right/0.23.1440.823@0.23.1440.823" timestamp="1584342135310" />
     <state width="1357" height="362" key="GridCell.Tab.0.right/0.23.1440.824@0.23.1440.824" timestamp="1584336646345" />
     <state width="239" height="420" key="HiddenNamespacesPopup" timestamp="1583428986031">
@@ -333,6 +329,10 @@
     <state x="397" y="264" key="com.intellij.ide.util.TipDialog/0.23.1440.822@0.23.1440.822" timestamp="1583948719805" />
     <state x="1969" y="333" key="com.intellij.ide.util.TipDialog/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584379269383" />
     <state x="397" y="264" key="com.intellij.ide.util.TipDialog/0.23.1440.823@0.23.1440.823" timestamp="1582735533379" />
+    <state x="2119" y="447" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1584385540722">
+      <screen x="1440" y="23" width="1920" height="1057" />
+    </state>
+    <state x="2119" y="447" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1440.823/1440.23.1920.1057@1440.23.1920.1057" timestamp="1584385540722" />
     <state x="323" y="49" width="858" height="796" key="find.popup" timestamp="1584242683658">
       <screen x="0" y="23" width="1440" height="822" />
     </state>
@@ -348,6 +348,6 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CAPSTONE$tester.coverage" NAME="tester Coverage Results" MODIFIED="1583260705592" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/CAPSTONE$wait.coverage" NAME="wait Coverage Results" MODIFIED="1582775973186" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/CAPSTONE$CAPSTONE.coverage" NAME="CAPSTONE Coverage Results" MODIFIED="1584380194610" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CAPSTONE$CAPSTONE.coverage" NAME="CAPSTONE Coverage Results" MODIFIED="1584385630884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

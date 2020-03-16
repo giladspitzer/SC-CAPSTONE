@@ -3,7 +3,11 @@
 <form method="POST" action="{{ url_for('create_post', option='commit', id=0) }}">
     <table class="table table-borderless">
         <tr>
-            <td style="padding-bottom: 0px">{{ wtf.form_field(commit_form.time_spent) }}</td>
+            <td style="padding-bottom: 0px">
+                {{ wtf.form_field(commit_form.course, sytle='visibility: hidden') }}
+                {{ wtf.form_field(commit_form.assignment, sytle='visibility: hidden') }}
+                {{ wtf.form_field(commit_form.time_spent) }}
+            </td>
         </tr>
 
         <tr>
